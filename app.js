@@ -5,9 +5,8 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) =>{
-    res.sendFile(__dirname + '/views/home.html');
+    res.sendFile(__dirname + '/views/Readme.html');
 });
 
 app.listen(8000, () => 
-console.log("Levantando un servidor con Express"));ç
-
+console.log("Levantando un servidor con Express"));
