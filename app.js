@@ -5,7 +5,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) =>{
-    res.sendFile(__dirname + '/views/Readme.html');
+    res.sendFile(__dirname + '/Readme.html');
 });
 
 app.listen(8000, () => 
