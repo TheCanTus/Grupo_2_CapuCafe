@@ -46,12 +46,12 @@ Hemos encontrado inspiración en diversos sitios web relacionados con el café y
 ## Imágenes de Wireframes
 
 - Wireframe de la página de inicio
-![Wireframe de la página de inicio](/images/Home.png)
+![Wireframe de la página de inicio](.public/images/Home.png)
 - Wireframe de la página de productos
-![Wireframe de la página de productos](/images/Productos.png)
+![Wireframe de la página de productos](.public/images/Productos.png)
 - Wireframe de la página de inicio de sesión
-![Wireframe de la página de inicio de sesión](/images/Login.png)
+![Wireframe de la página de inicio de sesión](.public/images/Login.png)
 - Wireframe de la página de registro
-![Wireframe de la página de registro](/images/Register.png)
+![Wireframe de la página de registro](.public/images/Register.png)
 - Wireframe de la página de carrito de compras
-![Wireframe de la página de carrito de compras](/images/Carrito-de-compras.png)
+![Wireframe de la página de carrito de compras](.public/images/Carrito-de-compras.png)
