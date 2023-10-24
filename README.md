@@ -22,7 +22,7 @@ Hemos encontrado inspiración en diversos sitios web relacionados con el café y
 
 4. [Café Bazar](https://www.modobarista.com): Inspiración para la variedad de productos que ofrecemos.
 
-5. [Café Estrella](https://compragamer.com): Si bien entendemos que la página no está relacionada con el café, nos inspiramos en la presentación ordenada del carrito de compra y la experiencia del usuario en la etapa de compra.
+5. [Compra Gamer](https://compragamer.com): Si bien entendemos que la página no está relacionada con el café, nos inspiramos en la presentación ordenada del carrito de compra y la experiencia del usuario en la etapa de compra.
 
 ## Integrantes
 
