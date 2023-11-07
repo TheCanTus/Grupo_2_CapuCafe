@@ -1,0 +1,150 @@
+.header{
+    display: none;
+}
+
+.main {
+    display: flex;
+}
+
+.product-info h1 {
+    text-align: center;
+
+}
+
+.caja-1 {
+    display: block;
+}
+
+.alternate-image{
+    display: none;
+}
+
+.product-image{
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.product-image > img{
+    max-width: 80%;
+    border:1px solid #ccc;
+    box-shadow: 5px 5px 10px rgb(110, 110, 110);
+}
+
+.product-image-main{
+    align-items: center;
+}
+
+.product-info{
+    align-items: center;
+}
+
+.caja-2{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+#add-to-cart-button{
+    background-color: #BC7643;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.cart-button{
+    text-align: center;
+    order: 1;
+}
+
+.quantity-control{
+    display: none;
+}
+
+.product-description{
+    text-align: justify;
+    order: 2;
+}
+
+.product-description h2{
+    font-weight: normal;
+}
+
+.related-products{
+    display: flex;
+    justify-content: space-between;
+}
+
+.related-product{
+    width: 45%;
+    border: 2px solid #ccc;
+    align-items: center;
+}
+
+.related-product img{
+    width: 100%;
+}
+
+@media (min-width: 768px){
+    .caja-1{
+        display: block;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .product-image-main{
+        justify-content: space-between;
+        display: flex;
+    }
+    .alternate-image{
+        padding-left: 0px;
+        padding-right: 0px;
+        display: flex;
+        flex-direction: column;
+        width: 15%;
+    }
+
+    .alternate-image img{
+        width: 120px;
+        border:1px solid #ccc;
+        box-shadow: 5px 5px 10px rgb(110, 110, 110);
+        margin-bottom: 10px;
+    }
+
+    .product-image{
+        width: 40%;
+    }
+
+    .product-info{
+        width: 30%;
+    }
+
+    .caja-2{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .product-description{
+        width: 45%;
+        order: 1;
+    }
+
+    .cart-button{
+        width: 25%;
+        order: 2;
+    }
+
+    .related-products{
+        justify-content: space-around;
+    }
+
+    .related-product{
+        max-width: 200px;
+    }
+}
