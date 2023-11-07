@@ -1,0 +1,54 @@
+#registro{
+    border: 2px solid #27262b; 
+    border-radius: 10px; 
+    padding: 20px; 
+    width: 300px; 
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Gravitas One', serif;
+    text-align: center;
+  }
+  
+  label{
+      font-family: 'Roboto', sans-serif;
+      text-align: left;
+  }
+  
+  input{
+      margin-bottom: 20px;
+      display: block;
+      width: 200px;
+      background-color: white;
+      border-color: rgb(119, 116, 116);   
+  }
+  
+  button{
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  background-color: #bc7643;
+  align-items: center;
+  border-color: #bc7643;
+  margin-bottom: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-size: medium;
+  color:white;
+  }
+  
+  
+  main{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+  }
+  
+  #registro p{
+      position: absolute;
+      bottom: 0;
+      font-family: 'Roboto', sans-serif;
+  }

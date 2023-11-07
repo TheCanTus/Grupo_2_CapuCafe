@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear usuario</title>
+    <link rel="stylesheet" href="css/registerstyles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gravitas+One&family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo de la marca">
+        </div>
+        <input type="checkbox" id="toggle">
+        <label for="toggle"><i class="fas fa-bars" id="menu-icon"></i></label>
+        <nav class="navigation">
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Productos</a>
+                    <ul>
+                        <li><a href="#">Cafes</a></li>
+                        <li><a href="#">Cafeteras</a></li>
+                        <li><a href="#">Repuestos</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Ofertas</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+    <div id="registro">
+    <form>
+        <h1>Registrate</h1>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre">
+        
+        <label for="apellido">Apellido:</label>
+        <input type="text" name="apellido">
+        
+        <label for="email">Correo electronico:</label>
+        <input type="email" name="email">
+        
+        <label for="usuario">Usuario:</label>
+        <input type="text" name="usuario">
+
+        <label for="clave">Contraseña:</label>
+        <input type="password" name="clave">
+
+       <div id="boton"><button type="submit">Enviar</button></div>
+    </form>
+    <p>¿Ya tenés cuenta?<a href="">Iniciá sesión aquí</a></p>
+</div>
+</main>
+</body>
+</html>
