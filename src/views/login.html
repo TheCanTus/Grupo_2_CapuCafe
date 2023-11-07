@@ -36,12 +36,15 @@
                 </div>
                 <!-- Login y Crear cuenta -->
                 <span class="login-bar">
-                    <i class="fa-solid fa-cart-shopping" id="icono-blanco"></i>
+                    <a href="/productCart">
+                        <i class="fa-solid fa-cart-shopping" id="icono-blanco"></i>
+                    </a>
                     <div class="account">
-                        <i class="fa-solid fa-user" id="icono-blanco"></i>
+                        <label for="user-icon" class="fa-solid fa-user" id="icono-blanco"></label>
+                        <input type="checkbox" id="user-icon" class="icono-checkbox">
                         <ul class="account-menu">
-                            <li><a href="#">Crea tu cuenta</a></li>
-                            <li><a href="#">Ingresa</a></li>
+                            <li><a href="/register">Crea tu cuenta</a></li>
+                            <li><a href="/login">Ingresa</a></li>
                         </ul>
                     </div>
                 </span>
@@ -52,7 +55,7 @@
             <!-- Barra de navegacion principal -->
             <div class="navigation">
                 <ul class="nav-desktop-list">
-                    <li><a href="/login">Inicio</a></li>
+                    <li><a href="/">Inicio</a></li>
                     <li><a href="#">Productos</a>
                         <ul>
                             <li><a href="#">Cafes</a></li>
