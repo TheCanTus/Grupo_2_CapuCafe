@@ -1,0 +1,64 @@
+.account-page{
+    margin-bottom: 60px;
+}
+.prueba{
+    max-width: 1300px;
+}
+.row-login{
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+}
+.container-login {
+    max-width: 500px;
+    max-height: 100%;
+    margin: 8% ;
+    padding: 0;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+
+}
+.container-login h2{
+    font-family:'Gravitas One', serif; 
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.fpassword{
+    text-align: right;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+.btn-login {
+    background-color: #BC7643;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.haveacc{
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: underline;
+    font-weight: normal;
+}
+.footer{
+    position: absolute;
+    bottom: 0;
+}
