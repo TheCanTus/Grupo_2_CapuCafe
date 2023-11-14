@@ -24,6 +24,14 @@ Hemos encontrado inspiración en diversos sitios web relacionados con el café y
 
 5. [Compra Gamer](https://compragamer.com): Si bien entendemos que la página no está relacionada con el café, nos inspiramos en la presentación ordenada del carrito de compra y la experiencia del usuario en la etapa de compra.
 
+## Tableros de Trabajo
+
+Para gestionar nuestro proyecto, utilizamos dos tableros de trabajo:
+
+1. [Trello](https://trello.com/b/g3zOX2Ee/grupo-2-dh): Puedes acceder a nuestro tablero de Trello para ver las tareas y el progreso de nuestro equipo.
+
+2. [GitHub](https://github.com/TheCanTus/Grupo_2_CapuCafe): Nuestro repositorio de GitHub es donde almacenamos y gestionamos nuestro código fuente y los problemas relacionados con el proyecto.
+
 ## Integrantes
 
 - **Mariano Joaquin Cantos Parra**: Contribuyó a la elaboración del archivo README.
