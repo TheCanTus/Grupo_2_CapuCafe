@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+</head>
+<body>
+    <h1>Editar Producto</h1>
+    
+    <form action="/productos/<%= productId %>" method="post">
+        <label for="nombre">Nombre del Producto:</label>
+        <input type="text" id="nombre" name="nombre" value="<%= product.nombre %>" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required><%= product.descripcion %></textarea>
+
+        <label for="imagen">Imagen (URL):</label>
+        <input type="text" id="imagen" name="imagen" value="<%= product.imagen %>" required>
+
+        <label for="categoria">Categoría:</label>
+        <input type="text" id="categoria" name="categoria" value="<%= product.categoria %>" required>
+
+        <label for="colores">Colores:</label>
+        <input type="text" id="colores" name="colores" value="<%= product.colores %>" required>
+
+        <label for="precio">Precio:</label>        
+        <input type="number" id="precio" name="precio" value="<%= product.precio %>" required>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>
