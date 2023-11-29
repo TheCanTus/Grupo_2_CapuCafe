@@ -1,0 +1,61 @@
+#editarProducto {
+    padding: 20px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+main h1{
+    font-family:'Gravitas One', serif; 
+    font-size: 25px;
+    margin-bottom: 30px;
+}
+
+main label {
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+main input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+main textarea{
+    margin-bottom: 30px;
+    height: 140px;
+    width: 100%;
+    font-size: 16px;
+}
+
+main button {
+    background-color: #BC7643;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+main select{
+    width: 40%;
+    height: 30px;
+    margin-bottom: 30px;
+    left: 0;
+}
