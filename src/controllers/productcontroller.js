@@ -6,6 +6,12 @@ const product = {
     },
     productDetail: (req, res) =>{
         res.render(path.join(__dirname , '../views/productDetail.ejs'));
+    },
+    crearProducto: (req, res) =>{
+        res.render(path.join(__dirname , '../views/crearProducto.ejs'))
+    },
+    editarProducto: (req, res) =>{
+        res.render(path.join(__dirname , '../views/editarProducto.ejs'))
     }
 };
 
