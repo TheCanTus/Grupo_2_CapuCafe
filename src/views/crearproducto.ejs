@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar producto nuevo</title>
+</head>
+<body>
+    <form>
+        <h1>Cargar un nuevo producto</h1>
+
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" name="nombre">
+
+        <label for="descripcion">Ingresa una descripción:</label>
+        <textarea name="descripcion">Escribe aquí...</textarea>
+
+        <label for="categoria">Categoria:</label>
+        <select name="categoria">
+        <option value="granos">Café en granos</option>
+        <option value="capsulas">Capsulas</option>
+        <option value="cafeteras">Cafeteras</option>
+        </select>
+
+        <label for="precio">Precio:</label>
+        <input type="text" name="precio">
+
+        <label for="imagenes">Selecciona una o más imagenes para el producto: </label>
+        <input type="file" name="imagenes" accept=".jpg,.png" multiple>
+
+        <button type="reset">Cancelar</button>
+        <button type="submit">Subir</button>
+    </form>
+</body>
+</html>
