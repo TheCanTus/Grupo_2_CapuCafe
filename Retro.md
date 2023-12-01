@@ -1,35 +1,53 @@
-# Retrospectiva del Primer Sprint - Metodología de la Estrella de Mar
+# Retrospectiva del Tercer Sprint - Metodología de la Estrella de Mar
 
-En esta retrospectiva, utilizaremos la metodología de la Estrella de Mar para analizar nuestro primer sprint y determinar lo que debemos comenzar a hacer, hacer más, continuar haciendo, hacer menos y dejar de hacer como equipo.
+En esta retrospectiva, utilizaremos la metodología de la Estrella de Mar para analizar nuestro Tercer sprint y determinar lo que debemos comenzar a hacer, hacer más, continuar haciendo, hacer menos y dejar de hacer como equipo.
 
 ## Comenzar a Hacer
 
-- **Planificación Detallada**: Comenzar a planificar con mayor detalle al comienzo de cada sprint para evitar retrasos en la entrega de tareas.
+1. **Planificación Detallada:**
+   - **Sprint 3 Observación:** La planificación fue casi inexistente, con una comunicación tardía y una ejecución concentrada al final. 
+   - **Sprint 4 Acción:** Iniciar la planificación del sprint 4 con mayor antelación. Establecer fechas clave para revisar y discutir el progreso.
 
-- **Documentación Mejorada**: Comenzar a documentar nuestras decisiones y cambios de manera más exhaustiva para garantizar la claridad y el seguimiento.
-
-**Commits de Todos los Integrantes**: Comenzar a fomentar que todos los integrantes realicen commits en el repositorio. Esto ayudará a mantener un registro claro del progreso y facilitará la colaboración en el código.
+2. **Documentación Mejorada:**
+   - **Sprint 3 Observación:** No se utilizó documentación en el sprint 2.
+   - **Sprint 4 Acción:** Considerar la implementación de documentación para facilitar la comprensión y el seguimiento del proyecto durante el sprint 4.
 
 ## Hacer Más
 
-- **Comunicación Explícita**: Hacer más hincapié en una comunicación explícita y regular entre los miembros del equipo para evitar malentendidos y asegurar que todos estén al tanto de los detalles.
+1. **Comunicación Explícita:**
+   - **Sprint 3 Observación:** La comunicación fue prácticamente nula hasta los últimos días antes de la entrega.
+   - **Sprint 4 Acción:** Fomentar la comunicación constante desde el inicio del sprint 4 para evitar malentendidos y mejorar la colaboración.
 
-- **Reuniones de Seguimiento**: Realizar más reuniones de seguimiento durante el sprint para evaluar el progreso y realizar ajustes en tiempo real.
+2. **Reuniones de Seguimiento:**
+   - **Sprint 3 Observación:** Solo se realizaron dos reuniones.
+   - **Sprint 4 Acción:** Programar reuniones de seguimiento regulares durante el sprint 4 para evaluar el progreso, discutir problemas y realizar ajustes en tiempo real.
 
 ## Continuar Haciendo
 
-**Respetar los Tiempos de Cada Integrante**: Continuar respetando los tiempos asignados a cada integrante para las tareas y colaboraciones. Esto asegura un ambiente de trabajo equitativo y eficiente.
+1. **Respetar los Tiempos de Cada Integrante:**
+   - **Sprint 3 Observación:** No se asignaron tiempos, pero la distribución de tareas fue equitativa y eficiente.
+   - **Sprint 4 Acción:** Continuar con la asignación equitativa de tareas, considerar establecer límites de tiempo para algunas actividades clave.
 
-- **Reuniones de Comunicación**: Continuar realizando reuniones de comunicación regular para mantener a todos informados y alineados.
+2. **Reuniones de Comunicación:**
+   - **Sprint 3 Observación:** No hubo reuniones regulares.
+   - **Sprint 4 Acción:** Mantener reuniones regulares para mantener a todos informados y alineados.
+
+3. **Commits de Todos los Integrantes:**
+   - **Sprint 3 Observación:** Se observaron mejoras en los commits de cada estudiante.
+   - **Sprint 4 Acción:** Fomentar y mantener la práctica de commits de todos los miembros para un registro claro del progreso.
 
 ## Hacer Menos
 
-- **Aplazamiento de Tareas Críticas**: Hacer menos aplazamiento de tareas críticas o decisiones importantes. Afrontarlas de manera oportuna para evitar futuros problemas.
+1. **Aplazamiento de Tareas Críticas:**
+   - **Sprint 3 Observación:** Hubo aplazamiento de tareas críticas, similar al sprint anterior.
+   - **Sprint 4 Acción:** Tomar medidas específicas para evitar el aplazamiento de tareas críticas en el sprint 4.
 
-- **Falta de Comunicación Explícita**: Hacer menos asunciones sobre la comprensión y conocimiento de los detalles por parte de otros miembros del equipo.
+2. **Falta de Comunicación Explícita:**
+   - **Sprint 3 Observación:** Aunque la comunicación fue clara, la frecuencia fue baja.
+   - **Sprint 4 Acción:** Mantener la claridad en la comunicación y aumentar la frecuencia de interacción entre los miembros del equipo.
 
 ## Dejar de Hacer
 
-- **Aplazamiento de Tareas Críticas**: Dejar de aplazar tareas críticas o decisiones importantes. Afrontarlas de manera oportuna para evitar futuros problemas.
-
-En resumen, esta retrospectiva utilizando la metodología de la Estrella de Mar nos ha proporcionado valiosas lecciones para mejorar nuestro proceso de desarrollo. Estamos comprometidos a abordar estas áreas de mejora en el próximo sprint y trabajar juntos para lograr un proyecto exitoso.
+1. **Aplazamiento de Tareas Críticas:**
+   - **Sprint 3 Observación:** Se repitió el aplazamiento de tareas críticas.
+   - **Sprint 4 Acción:** Establecer estrategias concretas para afrontar tareas críticas de manera oportuna en el sprint 4.
