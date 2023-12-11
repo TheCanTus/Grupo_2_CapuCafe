@@ -4,12 +4,15 @@ const path = require('path');
 const routes = require('./routes/routes')
 const userRoutes = require('./routes/users')
 const productRoutes = require('./routes/product')
+const adminRoutes = require('./routes/admin');
 
 app.set('views', path.join(__dirname, './views'))
 app.set('view engine', 'ejs')
 
 app.use(express.static(path.join(__dirname, '../public')))
 
+
+app.use('/', adminRoutes);
 app.use('/', routes);
 app.use('/', userRoutes);
 app.use('/', productRoutes);

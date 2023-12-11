@@ -12,7 +12,7 @@
 
     <main>
         <div id="crearProducto">
-            <form>
+            <form action="/crearProducto" method="POST" enctype="multipart/form-data">
 
                 <h1>Cargar un nuevo producto</h1>
 
@@ -35,8 +35,8 @@
                 <label for="imagenes">Selecciona una o más imagenes para el producto: </label>
                 <input type="file" name="imagenes" accept=".jpg,.png" multiple>
 
-                <button type="reset">Cancelar</button>
-                <button type="submit">Subir</button>
+                <button type="submit" class="btn btn btn-info">Guardar</button>
+                <a href="/administrar" class="btn btn-danger">Volver</a>
             </form>
         </div>
     </main>
