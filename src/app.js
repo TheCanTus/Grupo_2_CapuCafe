@@ -15,4 +15,4 @@ app.use('/', userRoutes);
 app.use('/', productRoutes);
 
 app.listen(8000, () => 
-console.log("Levantando un servidor con Express"));
+console.log("Levantando un servidor en el puerto 8000"));
