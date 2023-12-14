@@ -1,0 +1,32 @@
+main {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Estilo básico para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /* Estilo para las celdas de encabezado y datos */
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Estilo para el encabezado de la tabla */
+  th {
+    background-color: #BC7643;
+    color: white;
+  }
+  
+  titulo{
+    font-family:'Gravitas One', serif;
+  }
