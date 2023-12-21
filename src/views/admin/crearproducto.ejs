@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+    <link rel="stylesheet" href="/css/crearProducto.css">
+
+</head>
+
+<body>
+    <%- include('../partials/header.ejs') %>
+
+    <main>
+        <div id="crearProducto">
+            <form action="/products/create" method="POST">
+
+                <h1>Cargar un nuevo producto</h1>
+
+                <input type="text" name="nombre" placeholder="Nombre" required="required" value="">
+
+                <input type="text" name="descripcion" placeholder="Descripcion" required="required" value="">
+
+                <select name="categoria">
+                    <option selected disabled value="#">Elija la categoria</option>
+                    <option value="repuestos">Repuestos</option>
+                    <option value="rafe">Cafe</option>
+                    <option value="cafeteras">Cafeteras</option>
+                </select>
+
+                <input type="number" id="precio" name="precio" value="" required="required">
+
+                <input type="file" name="imagenes" accept=".jpg,.png" multiple>
+
+                <button type="submit" class="btn btn btn-info">Guardar</button>
+                <a href="/administrar" class="btn btn-danger">Volver</a>
+            </form>
+        </div>
+    </main>
+
+
+    <%- include('../partials/footer.ejs') %>
+</body>
+
+</html>

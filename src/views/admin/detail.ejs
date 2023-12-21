@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <%- include('../partials/head.ejs') %>
+        <link rel="stylesheet" href="/css/productDetailStyle.css">
+
+</head>
+
+<body>
+    <%- include('../partials/header.ejs') %>
+
+        <main>
+
+            <div class="caja-1">
+                <div class="product-image-main">
+                    <div class="alternate-image">
+                        <img src="/images/<%= miProducto.imagenes %>" alt="MásImagenes1">
+                        <img src="/images/<%= miProducto.imagenes %>" alt="MásImagenes2">
+                        <img src="/images/<%= miProducto.imagenes %>" alt="MásImagenes3">
+                    </div>
+                    <div class="product-image">
+                        <img src="/images/<%= miProducto.imagenes %>" alt="Producto">
+                    </div>
+
+                    <div class="product-info">
+                        <h1>
+                            <%= miProducto.nombre %>
+                        </h1>
+                        <p>
+                            <%= miProducto.precio %>
+                        </p>
+                        <p>Disponibilidad: En stock</p>
+                        <label for="product-type">Color:</label>
+                        <select id="product-type">
+                            <option value="Tipo 1">Azul</option>
+                            <option value="Tipo 2">Rojo</option>
+                            <option value="Tipo 3">Negro</option>
+                        </select>
+
+                        <div class="quantity-control">
+                            <button id="decrement-quantity">-</button>
+                            <span id="quantity">1</span>
+                            <button id="increment-quantity">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="caja-2">
+                <div class="product-description">
+                    <h2>Descripción</h2>
+                    <p>
+                        <%= miProducto.descripcion %>
+                    </p>
+                </div>
+                <div class="cart-button">
+                    <button id="add-to-cart-button">Agregar al carrito</button>
+                </div>
+            </div>
+
+            <a href="/products" class="btn btn-danger">Volver</a>
+
+        </main>
+
+        <!-- Footer -->
+        <%- include('../partials/footer')%>
+</body>

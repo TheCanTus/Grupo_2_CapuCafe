@@ -1,15 +1,20 @@
 [
-{"id":1,
-"nombre":"nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis",
-"descripcion":"Wine - Sauvignon Blanc Oyster",
-"image":"http://dummyimage.com/179x250.png/5fa2dd/ffffff",
-"categoria":"Repuestos",
-"precio":70416.97
-},
-{"id":2,
-"nombre":"sapien sapien non mi integer",
-"descripcion":"Wine - Beringer Founders Estate",
-"image":"http://dummyimage.com/159x250.png/dddddd/000000",
-"categoria":"Café",
-"precio":37443.14}
+  {
+    "nombre": "Cafe torrado 2",
+    "descripcion": "es un mal cafe",
+    "imagenes": "img-cafetera-moulinex.jpg",
+    "categoria": "Cafe",
+    "colores": "Marron",
+    "precio": "123.97",
+    "id": "1"
+  },
+  {
+    "nombre": "cafe comun",
+    "descripcion": "comun tucan",
+    "imagenes": "img-cafetera-moulinex.jpg",
+    "categoria": "Cafe",
+    "colores": "Marron",
+    "precio": "356.14",
+    "id": "2"
+  }
 ]

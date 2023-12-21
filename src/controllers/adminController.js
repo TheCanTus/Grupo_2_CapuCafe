@@ -5,10 +5,10 @@ const { log } = require('console');
 module.exports = {
     index: (req,res) =>{
         let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
-        res.render(path.resolve(__dirname, '../views/administrar.ejs'), {productos});
+        res.render(path.resolve(__dirname, '../views/admin/administrar.ejs'), {productos});
     },
     create: (req,res)=>{
-        res.render(path.resolve(__dirname,'../views/crearproducto.ejs'))
+        res.render(path.resolve(__dirname,'../views/admin/crearproducto.ejs'))
     },
     save: (req,res)=>{
         let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
@@ -20,15 +20,14 @@ module.exports = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         precio: req.body.precio,
-        categoría: req.body.categoria,
-        image: req.file.filename
+        categoria: req.body.categoria
         }
         productos.push(nuevoProducto);
 
         let nuevoProductoGuardar = JSON.stringify(productos,null,2);
 
         fs.writeFileSync(path.resolve(__dirname,'../database/productos.json'),nuevoProductoGuardar);
-        res.redirect('/administrar');
+        res.redirect('/products');
     },
     show: (req,res)=>{
         let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
@@ -39,7 +38,7 @@ module.exports = {
                 miProducto = producto;
             }
         });
-        res.render(path.resolve(__dirname, '../views/productDetail.ejs'),{miProducto})
+        res.render(path.resolve(__dirname, '../views/admin/detail.ejs'),{miProducto})
     },
     edit : (req,res)=>{
         let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
@@ -47,7 +46,7 @@ module.exports = {
         let productoEditar = productos.find(producto =>{
             return producto.id == id
         })
-        res.render(path.resolve(__dirname,'../views/editarproducto.ejs'),{productoEditar})
+        res.render(path.resolve(__dirname,'../views/admin/editarproducto.ejs'),{productoEditar})
     },
     update : (req,res)=>{
         let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));  
@@ -59,10 +58,9 @@ module.exports = {
             }
             return producto;
         })    
-
         let productoActualizado = JSON.stringify(productosActualizar,null,2);
         fs.writeFileSync(path.resolve(__dirname,'../database/productos.json'),productoActualizado);
-        res.redirect('/administrar');
+        res.redirect('/products');
 
     },
     destroy: (req,res)=>{
@@ -71,6 +69,6 @@ module.exports = {
         let productosFinal = productos.filter(producto => producto.id != id)
         let productosGuardarFinal = JSON.stringify(productosFinal,null,2);
         fs.writeFileSync(path.resolve(__dirname,'../database/productos.json'),productosGuardarFinal);
-        res.redirect('/administrar');
+        res.redirect('/products');
     }
 }

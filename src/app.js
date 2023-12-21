@@ -5,17 +5,19 @@ const routes = require('./routes/routes')
 const userRoutes = require('./routes/users')
 const productRoutes = require('./routes/product')
 const adminRoutes = require('./routes/admin');
+const methodOverride = require('method-override');
 
-app.set('views', path.join(__dirname, './views'))
-app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, '../public')))
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
-
-app.use('/', adminRoutes);
 app.use('/', routes);
 app.use('/', userRoutes);
 app.use('/', productRoutes);
+app.use('/', adminRoutes);
 
 app.listen(8000, () => 
 console.log("Levantando un servidor en el puerto 8000"));
