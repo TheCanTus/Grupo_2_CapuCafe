@@ -1,11 +1,11 @@
 [
   {
     "nombre": "Cafe torrado 2",
-    "descripcion": "es un mal cafe",
-    "imagenes": "img-cafetera-moulinex.jpg",
+    "descripcion": "Cafe normal",
+    "imagenes": "",
     "categoria": "Cafe",
-    "colores": "Marron",
-    "precio": "123.97",
+    "colores": "cafe",
+    "precio": "354.97",
     "id": "1"
   },
   {
@@ -16,5 +16,12 @@
     "colores": "Marron",
     "precio": "356.14",
     "id": "2"
+  },
+  {
+    "id": "21",
+    "nombre": "Cafe torrado",
+    "descripcion": "es un buen cafe",
+    "precio": "600",
+    "categoria": "rafe"
   }
 ]
