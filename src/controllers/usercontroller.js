@@ -1,8 +1,8 @@
 const path = require('path')
 
 const user = {
-    login:(req, res) =>{res.render(path.join(__dirname , '../views/login.ejs'));},
-    register:(req, res) =>{res.render(path.join(__dirname , '../views/register.ejs'));},
+    login:(req, res) =>{res.render(path.join(__dirname , '../views/users/login.ejs'));},
+    register:(req, res) =>{res.render(path.join(__dirname , '../views/users/register.ejs'));},
     
     loginProcess: (req , res) => {
         let userToLogin = user.findByField('NombreDeUsuario', req.body.NombreDeUsuario);
@@ -13,7 +13,7 @@ const user = {
                 req.session.userLogged = userToLogin;
                 return res.redirect('../views/index.ejs')
             }
-            return res.render('../views/login.ejs', {
+            return res.render('../views/users/login.ejs', {
                 errors : {
                     contraseña: {
                         msg: 'Las credenciales son inválidas'
@@ -21,7 +21,7 @@ const user = {
                 }
             })
         }
-        return res.render('../views/login.ejs', {
+        return res.render('../views/users/login.ejs', {
             errors : {
                 email: {
                     msg: 'No se encontró el nombre de usuario'
