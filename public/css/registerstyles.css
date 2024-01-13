@@ -2,7 +2,7 @@
     border: 2px solid #27262b;
     border-radius: 10px;
     padding: 20px;
-    width: 300px;
+    width: 400px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -18,8 +18,8 @@ main label {
 
 main input {
     margin-bottom: 20px;
-    display: block;
-    width: 200px;
+    display: flex;
+    width: 300px;
     background-color: white;
     border-color: rgb(119, 116, 116);
 }

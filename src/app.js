@@ -6,6 +6,7 @@ const userRoutes = require('./routes/users')
 const productRoutes = require('./routes/product')
 const adminRoutes = require('./routes/admin');
 const methodOverride = require('method-override');
+const session = require('express-session')
 
 app.set('views', path.join(__dirname, './views'));
 app.set('view engine', 'ejs');
@@ -18,6 +19,12 @@ app.use('/', routes);
 app.use('/', userRoutes);
 app.use('/', productRoutes);
 app.use('/', adminRoutes);
+
+app.use(session({
+    secret: "secret",
+    resave: true,
+    saveUninitialized: true
+}))
 
 app.listen(8000, () => 
 console.log("Levantando un servidor en el puerto 8000"));
