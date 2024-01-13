@@ -1,12 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <%- include('./partials/head.ejs') %>    
-  <head>
-    <%- include('./partials/head')%>
-    <link rel="stylesheet" href="/css/administrar.css">
+<head>
+  <%- include('./partials/head')%>
+  <link rel="stylesheet" href="/css/administrar.css">
 </head>
 
 <body>
+<%- include('./partials/header')%>
     <main class="container-fluid p-0">
       <!--Administrador de productos-->
       <br>
@@ -14,7 +14,7 @@
         <article class="col-12 ">
           <h2>Administrador de Productos</h2>
         </article>
-        <article class="col-12">
+                <article class="col-12">
           <a href="/crearProducto"><ion-icon name="add-circle-outline"></ion-icon>Agregar</a>
         </article>
         <article class="col-12" >
@@ -44,5 +44,6 @@
       </section>
       <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     </main>
+  <%- include('./partials/footer')%>
   </body>
 </html>
