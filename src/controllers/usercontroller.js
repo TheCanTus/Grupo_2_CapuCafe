@@ -30,29 +30,36 @@ const usercontroller = {
         }
     }
 }
-            /* const { nombre, correo, contrasenia } = req.body;
 
-    const imagenPerfil = req.file ? req.file.filename : null;
-    const hashedPassword = bcrypt.hashSync(contrasenia, 10);
-
-    const nuevoUsuario = {
-      nombre,
-      correo,
-      contrasenia: hashedPassword,
-      imagenPerfil
-    };
-
-    const usersData = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-    usersData.push(nuevoUsuario);
-    fs.writeFileSync(usersFilePath, JSON.stringify(usersData, null, 2));
-
-    res.status(201).json({ mensaje: 'Usuario registrado con éxito' });
-  } */
-
-
-/* const user = {
-    login:(req, res) =>{res.render(path.join(__dirname , '../views/login.ejs'));},
-    register:(req, res) =>{res.render(path.join(__dirname , '../views/register.ejs'));}
-} */
+const user = {
+    login:(req, res) =>{res.render(path.join(__dirname , '../views/users/login.ejs'));},
+    register:(req, res) =>{res.render(path.join(__dirname , '../views/users/register.ejs'));},
+    
+    loginProcess: (req , res) => {
+        let userToLogin = user.findByField('NombreDeUsuario', req.body.NombreDeUsuario);
+        if (userToLogin) {
+            let contraseñaCorrecta = bycryptjs.compareSync(req.body.contraseña, UserToLogin.contraseña);
+            if (contraseñaCorrecta){
+                delete userToLogin.contraseña;
+                req.session.userLogged = userToLogin;
+                return res.redirect('../views/index.ejs')
+            }
+            return res.render('../views/users/login.ejs', {
+                errors : {
+                    contraseña: {
+                        msg: 'Las credenciales son inválidas'
+                    }
+                }
+            })
+        }
+        return res.render('../views/users/login.ejs', {
+            errors : {
+                email: {
+                    msg: 'No se encontró el nombre de usuario'
+                }
+            }
+        })
+    },
+}
 
 module.exports = usercontroller;
