@@ -1,0 +1,9 @@
+const express = require('express');
+const router = express.Router();
+const usersController = require('../controllers/usersController');
+const upload = require('../config/multerConfig'); // Asegúrate de importar la configuración de Multer
+
+router.get('/registro', usersController.mostrarFormularioRegistro);
+router.post('/registro', upload.single('imagenPerfil'), usersController.registrarUsuario);
+
+module.exports = router;

@@ -7,12 +7,12 @@ const adminController = require(path.resolve(__dirname,'../controllers/adminCont
 
 
 
-router.get('/administrar', adminController.index);
-router.get('/administrar/create', adminController.create);
-
-router.get('/administrar/detail/:id', adminController.show);
-router.get('/administrar/edit/:id', adminController.edit);
-router.put('/administrar/edit/:id', adminController.update);
-router.get('/administrar/delete/:id', adminController.destroy);
+router.get('/products', adminController.index);
+router.get('/products/create', adminController.create);
+router.post('/products/create', adminController.save);
+router.get('/products/detail/:id', adminController.show);
+router.get('/products/:id/edit', adminController.edit);
+router.put('/products/:id/edit', adminController.update);
+router.get('/products/delete/:id', adminController.destroy);
 
 module.exports = router;
