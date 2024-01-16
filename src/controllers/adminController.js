@@ -20,7 +20,8 @@ module.exports = {
         nombre: req.body.nombre,
         descripcion: req.body.descripcion,
         precio: req.body.precio,
-        categoria: req.body.categoria
+        categoria: req.body.categoria,
+        imagenes: req.file.filename,
         }
         productos.push(nuevoProducto);
 
