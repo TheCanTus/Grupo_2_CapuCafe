@@ -2,7 +2,7 @@
   {
     "nombre": "Cafe torrado 2",
     "descripcion": "Cafe normal",
-    "imagenes": "",
+    "imagenes": "img-cafetera-moulinex.jpg",
     "categoria": "Cafe",
     "colores": "cafe",
     "precio": "354.97",
@@ -18,10 +18,21 @@
     "id": "2"
   },
   {
-    "id": "21",
-    "nombre": "Cafe torrado",
-    "descripcion": "es un buen cafe",
+    "nombre": "Cafe Colombiano",
+    "descripcion": "El origen del grano es cultivado en la región de Huila, Colombia. Este café se trata de un blend de diferentes variedades, clasificados con los altos estandares de exportacion de la Federacion Colombiana del Café. Presenta como características en su sabor una acidez limpia, frutal y vivaz. Con aroma floral y de cuerpo liviano, característico de los café de beneficio lavado. Notas de cata: chocolate, cereza y naranja.",
+    "imagenes": "img-cafetera-moulinex.jpg",
+    "categoria": "Cafe",
+    "colores": "Marron",
     "precio": "600",
-    "categoria": "rafe"
+    "id": "21"
+  },
+  {
+    "nombre": "Cafe Colombiano",
+    "descripcion": "El origen del grano es cultivado en la región de Huila, Colombia. Este café se trata de un blend de diferentes variedades, clasificados con los altos estandares de exportacion de la Federacion Colombiana del Café. Presenta como características en su sabor una acidez limpia, frutal y vivaz. Con aroma floral y de cuerpo liviano, característico de los café de beneficio lavado. Notas de cata: chocolate, cereza y naranja.",
+    "imagenes": "img-cafetera-moulinex.jpg",
+    "categoria": "Cafe",
+    "colores": "Marron",
+    "precio": "600",
+    "id": "33"
   }
 ]

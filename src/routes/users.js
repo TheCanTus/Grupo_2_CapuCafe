@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const bcrypt = require('bcryptjs');
+const guestMiddleware = require('../middlewares/guestMiddleware')
 
 const {body} = require('express-validator');
 
@@ -13,7 +14,7 @@ let archivoUsuarios = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../dat
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=> {
-        cb(null, path.resolve(__dirname, '../../public/images/usuarios'))
+        cb(null, path.resolve(__dirname, '../../public/images/users'))
     },
     filename: (req, file, cb)=> {
         let fileName = `${Date.now()}_img${path.extname(file.originalname)}`;
@@ -46,19 +47,14 @@ const validacionesRegistro = [
 
 ];
 
-userRoutes.get('/registro', controllersUser.registrar);
+userRoutes.get('/register', guestMiddleware, controllersUser.registrar);
 
-userRoutes.post('/registro', upload.single('avatar'), validacionesRegistro, controllersUser.create);
+userRoutes.post('/register', upload.single('avatar'), validacionesRegistro, controllersUser.create);
+
+userRoutes.post('/login', controllersUser.loginProcess);
+userRoutes.get('/login', guestMiddleware, controllersUser.login);
+userRoutes.get('/user/profile', controllersUser.profile)
+
 
 module.exports = userRoutes;
 
-/* userRoutes.get('/login', user.login);
-
-userRoutes.get('/register', user.register);
-
-router.get('/registro', usercontroller.mostrarFormularioRegistro);
-router.post('/registro', upload.single('imagenPerfil'), usercontroller.registrarUsuario);
-
-module.exports = router;
-
-module.exports = userRoutes; */

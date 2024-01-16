@@ -65,6 +65,7 @@
     "safer-buffer": "^2.1.2",
     "send": "^0.18.0",
     "serve-static": "^1.15.0",
+    "session": "^0.1.0",
     "set-function-length": "^1.1.1",
     "setprototypeof": "^1.2.0",
     "side-channel": "^1.0.4",

@@ -17,26 +17,30 @@ main label {
 }
 
 main input {
-    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 30px;
     display: flex;
     width: 300px;
     background-color: white;
     border-color: rgb(119, 116, 116);
 }
 
+main h1 {
+ margin-bottom: 45px;
+}
 main button {
     padding-left: 5%;
     padding-right: 5%;
     padding-top: 1%;
     padding-bottom: 1%;
-    background-color: #bc7643;
+    background-color: #bc7643 !important;
     align-items: center;
-    border-color: #bc7643;
+    border-color: #bc7643!important;
     margin-bottom: 30px;
     font-family: 'Roboto', sans-serif;
     font-weight: bolder;
     font-size: medium;
-    color: white;
+    color: white!important;
 }
 
 

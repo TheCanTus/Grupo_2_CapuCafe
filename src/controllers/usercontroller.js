@@ -1,17 +1,34 @@
 const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
+const user = require('../models/usuarios')
+
 
 const {validationResult}=require('express-validator');
+const { error } = require('console');
 
 const usercontroller = {
   registrar: (req, res) => {
-    res.render(path.resolve(__dirname,'../views/users/registro.ejs'));
+    res.render(path.resolve(__dirname,'../views/users/register.ejs'));
   },
 
   create: (req, res) => {
     let archivoUsuarios = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/usuarios.json')));
     const errors = validationResult(req);
+
+    let userInDB = user.findByField('email', req.body.email);
+
+    if (userInDB){
+        return res.render('/register', {
+            errors: {
+                email: {
+                    msg: 'Este Email ya esta registrado'
+                }
+            },
+            oldData: req.body
+        });
+    }
+
     if (errors.isEmpty()) {
         let usuario = {
             nombre: req.body.nombre,
@@ -22,31 +39,30 @@ const usercontroller = {
             role: 1,
         }
         archivoUsuarios.push (usuario);
-        let nuevoUsuario = JSON.stringify(archivoUsuarios, null, 2)
-        fs.writeFileSync(path.resolve(__dirname,'../database/usuarios.json',nuevoUsuario));
+        let nuevoUsuarioGuardar = JSON.stringify(archivoUsuarios, null, 2)
+        fs.writeFileSync(path.resolve(__dirname,'../database/usuarios.json'),nuevoUsuarioGuardar);
         res.redirect('/login')
         } else{
-            return res.render(path.resolve(__dirname,'../views/users/registro.ejs'),{errors: errors.errors, old:req.body});
+            console.log(errors.errors)
+            return res.render(path.resolve(__dirname,'../views/users/register.ejs'),{errors: errors.errors, old:req.body});
         }
-    }
-}
+    },
 
-const user = {
     login:(req, res) =>{res.render(path.join(__dirname , '../views/users/login.ejs'));},
-    register:(req, res) =>{res.render(path.join(__dirname , '../views/users/register.ejs'));},
     
     loginProcess: (req , res) => {
-        let userToLogin = user.findByField('NombreDeUsuario', req.body.NombreDeUsuario);
+        let userToLogin = user.findByField('Email', req.body.email);
         if (userToLogin) {
-            let contraseñaCorrecta = bycryptjs.compareSync(req.body.contraseña, UserToLogin.contraseña);
+            let contraseñaCorrecta = bcrypt.compareSync(req.body.password, userToLogin.password);
             if (contraseñaCorrecta){
-                delete userToLogin.contraseña;
+                delete userToLogin.password;
                 req.session.userLogged = userToLogin;
-                return res.redirect('../views/index.ejs')
+                //wwwwwconsole.log(req.session)
+                return res.redirect('/user/profile')
             }
             return res.render('../views/users/login.ejs', {
                 errors : {
-                    contraseña: {
+                    password: {
                         msg: 'Las credenciales son inválidas'
                     }
                 }
@@ -60,6 +76,14 @@ const user = {
             }
         })
     },
+
+    profile: (req, res) => {
+        return res.render('../views/users/profile.ejs', {
+            user: req.session.userLogged
+        });
+    },
+
 }
+
 
 module.exports = usercontroller;

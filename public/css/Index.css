@@ -57,21 +57,25 @@ text-decoration: none;
 
 .product-info {
     display: flex;
+    padding-top: 3px;
+    position: relative;
+    white-space: nowrap;
+}
+.nombre{
+    width: 100%;
     border-top: 1px solid #ebebeb;
     padding-top: 10px;
-    position: relative;
 }
-
 .price {
     font-size: 18px;
-    width: 30%;
+    width: 70%;
     color: #333;
 }
 
 .discount {
     font-size: 16px;
     color: #39b54a;
-    width: 70%;
+    width: 30%;
 }
 
 .product-info .truck {
@@ -85,7 +89,7 @@ text-decoration: none;
     border-radius: 50%;
     position: absolute;
     right: 20px;
-    top: -15px;
+    top: -65px;
 }
 
 .description {
@@ -95,7 +99,6 @@ text-decoration: none;
 
 .main-article .description {
     color: #666;
-    white-space: nowrap;
 }
 
 .promotion-banner {

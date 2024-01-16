@@ -1,11 +1,10 @@
 [
-    {
-      "nombre": "Eduardo",
-      "apellido": "Virgilio",
-      "email": "edu@gmail.com",
-      "password": "$2a$10$mQIr77kIe9ow7d0VrIbWsuR8MVbiNLbo/pVMc7fanVw2X8t3QAmaK",
-      "avatar": "foto-1614650624760.jpg",
-      "role": 1
-    }
-  
-  ]
+  {
+    "nombre": "Mariano",
+    "apellido": "Cantos",
+    "email": "joaquincantos@hotmail.com",
+    "password": "$2b$10$daoqvAF6DHpjnUHN3YsojO0/zBmd2WZD5fILU2ClsdMDQE.7hcvZK",
+    "avatar": "1705415990327_img.jpg",
+    "role": 1
+  }
+]

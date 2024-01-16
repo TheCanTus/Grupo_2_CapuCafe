@@ -11,30 +11,43 @@
 
     <main>
         <div id="registro">
-            <form>
+            <form action="/register" method="post" enctype="multipart/form-data">
                 <h1>Registrate</h1>
-
-                <label for="nombre">Nombre:</label>
-                <input type="text" name="nombre">
-
-                <label for="apellido">Apellido:</label>
-                <input type="text" name="apellido">
-
-                <label for="email">Correo electronico:</label>
-                <input type="email" name="email">
-
-                <label for="usuario">Usuario:</label>
-                <input type="text" name="usuario">
-
-                <label for="clave">Contraseña:</label>
-                <input type="password" name="clave">
-
-                <div id="boton"><button type="submit">Enviar</button></div>
+                <div class="form-group">
+                    <!--Noten aqui en los input estoy persistiendo los datos si el usuario coloca algunos datos  buenos, pero otros no-->
+                    <input type="text" class="form-control" name="nombre"
+                        placeholder="Nombre"
+                        value="<%= typeof old != 'undefined' ? old.nombre : '' %>">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="apellido"
+                        placeholder="Apellido"
+                        value="<%= typeof old != 'undefined' ? old.apellido : '' %>">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" name="email"
+                        placeholder="Email"
+                        value="<%= typeof old != 'undefined' ? old.email : '' %>">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password"
+                        placeholder="Contraseña">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" name="confirm_password"
+                        placeholder="Confirma Contraseña">
+                </div>
+                <div class="custom-file">
+                    <input type="file" name="avatar"
+                        placeholder="Debes eligir tu avatar...">
+                </div>
+                <div>
+                    <div id="boton"><button type="submit" class="btn btn btn-info">Registrarme</button>
+                </div>
             </form>
             <p>¿Ya tenés cuenta?<a href="/login">Iniciá sesión aquí</a></p>
         </div>
     </main>
-
     <%- include('../partials/footer')%>
 </body>
 
