@@ -10,26 +10,32 @@ module.exports = {
     create: (req,res)=>{
         res.render(path.resolve(__dirname,'../views/admin/crearproducto.ejs'))
     },
-    save: (req,res)=>{
+    save: (req, res) => {
         let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
-        let ultimoElemento = productos.pop();
-        productos.push(ultimoElemento);
-
+    
+        let ultimoElemento = productos[productos.length - 1];
+    
+        //console.log("Ultimo Elemento:", ultimoElemento);
+    
         let nuevoProducto = {
-        id: ultimoElemento.id + 1,
-        nombre: req.body.nombre,
-        descripcion: req.body.descripcion,
-        precio: req.body.precio,
-        categoria: req.body.categoria,
-        imagenes: req.file.filename,
+            id: ultimoElemento ? parseInt(ultimoElemento.id) + 1 : 1,
+            nombre: req.body.nombre,
+            descripcion: req.body.descripcion,
+            precio: req.body.precio,
+            categoria: req.body.categoria,
+            imagenes: req.file.filename,
         }
+    
+        console.log("Nuevo Producto:", nuevoProducto);
+    
         productos.push(nuevoProducto);
-
-        let nuevoProductoGuardar = JSON.stringify(productos,null,2);
-
-        fs.writeFileSync(path.resolve(__dirname,'../database/productos.json'),nuevoProductoGuardar);
+    
+        let nuevoProductoGuardar = JSON.stringify(productos, null, 2);
+    
+        fs.writeFileSync(path.resolve(__dirname, '../database/productos.json'), nuevoProductoGuardar);
         res.redirect('/products');
-    },
+    }
+    ,
     show: (req,res)=>{
         let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
         let id = req.params.id;
