@@ -4,6 +4,7 @@ const path = require('path');
 const multer = require('multer');
 //Importación del Middleware
 const adminController = require(path.resolve(__dirname,'../controllers/adminController'));
+const guestMiddleware = require('../middlewares/guestMiddleware');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=> {
@@ -20,7 +21,7 @@ const upload = multer({storage})
 
 
 
-router.get('/products', adminController.index);
+router.get('/products', guestMiddleware, adminController.index);
 router.get('/products/create', adminController.create);
 router.post('/products/create', upload.single('imagenes'), adminController.save);
 router.get('/products/detail/:id', adminController.show);
