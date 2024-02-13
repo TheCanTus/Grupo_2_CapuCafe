@@ -1,11 +1,12 @@
 CREATE DATABASE capucafe_db;
 
-CREATE TABLE `capucafe_db`.`clientes` (
+CREATE TABLE `capucafe_db`.`usuarios` (
   `id` INT NOT NULL,
   `nombre` VARCHAR(50) NOT NULL,
   `apellido` VARCHAR(50) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(50) NOT NULL,
+  `rol` INT NOT NULL,
   `createdAt` DATETIME NULL,
   `updatedAt` DATETIME NULL,
   PRIMARY KEY (`id`),
@@ -46,17 +47,17 @@ CREATE TABLE `capucafe_db`.`productos` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-CREATE TABLE `capucafe_db`.`clientesproductos` (
+CREATE TABLE `capucafe_db`.`usuariosproductos` (
   `id` INT NOT NULL,
-  `clienteId` INT NOT NULL,
+  `usuariosId` INT NOT NULL,
   `productoId` INT NOT NULL,
   `cantidad` INT NOT NULL,
   `createdAt` DATETIME NULL,
   `updatedAt` DATETIME NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `fk_clienteid`
+  CONSTRAINT `fk_usuariosid`
     FOREIGN KEY (`id`)
-    REFERENCES `capucafe_db`.`clientes` (`id`)
+    REFERENCES `capucafe_db`.`usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_productoid`
