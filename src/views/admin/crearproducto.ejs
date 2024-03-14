@@ -20,11 +20,11 @@
 
                 <input type="text" name="descripcion" placeholder="Descripcion" required="required" value="">
 
-                <select name="categoria">
-                    <option selected disabled value="#">Elija la categoria</option>
-                    <option value="repuestos">Repuestos</option>
-                    <option value="rafe">Cafe</option>
-                    <option value="cafeteras">Cafeteras</option>
+                <select name="categoriaId">
+                    <option selected disabled value="#">Elija la categoria
+                    <% categorias.forEach(categoria => { %>
+                        <option value=<%= categoria.id%>> <%= categoria.categoria %></option>
+                    <% }) %>
                 </select>
 
                 <input type="number" id="precio" name="precio" value="" required="required">

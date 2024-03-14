@@ -12,7 +12,7 @@
     <main>
 
         <div id="editarProducto">
-            <form action="/products/<%= productoEditar.id%>/edit?_method=PUT" method="POST">
+            <form action="/products/<%= productoEditar.id%>/edit?_method=PUT" method="POST" enctype="multipart/form-data">
 
                 <h1>Editar Producto</h1>
 
@@ -25,11 +25,19 @@
                 <label for="imagenes">Selecciona una o más imagenes para el producto: </label>
                 <input type="file" name="imagenes" accept=".jpg,.png" multiple>
 
-                <label for="categoria">Categoría:</label>
-                <input type="text" id="categoria" name="categoria" value="" required>
+                <select name="categoriaId">
+                    <option selected disabled value="#">Elija la categoria
+                    <% categorias.forEach(categoria => { %>
+                        <option value=<%= categoria.id%>> <%= categoria.categoria %></option>
+                    <% }) %>
+                </select>
 
-                <label for="colores">Colores:</label>
-                <input type="text" id="colores" name="colores" value="" required>
+                <select name="colores">
+                    <option selected disabled value="#">Elija el color
+                    <% colores.forEach(color => { %>
+                        <option value=<%= color.id%>> <%= color.color %></option>
+                    <% }) %>
+                </select>
 
                 <label for="precio">Precio:</label>
                 <input type="number" id="precio" name="precio" value="<%= productoEditar.precio%>" required>

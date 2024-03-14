@@ -22,10 +22,10 @@ module.exports = (sequelize,dataTypes) => {
                 allowNull : false,
             },
             createdAt : {
-                type : dataTypes.DATETIME
+                type : dataTypes.DATE 
             },
             updatedAt : {
-                type : dataTypes.DATETIME
+                type : dataTypes.DATE 
             }
     }
     const config ={

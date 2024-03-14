@@ -7,6 +7,7 @@ CREATE TABLE `capucafe_db`.`usuarios` (
   `email` VARCHAR(100) NOT NULL,
   `password` VARCHAR(50) NOT NULL,
   `rol` INT NOT NULL,
+  `avatar` VARCHAR(50) NOT NULL,
   `createdAt` DATETIME NULL,
   `updatedAt` DATETIME NULL,
   PRIMARY KEY (`id`),

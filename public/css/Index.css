@@ -92,6 +92,12 @@ text-decoration: none;
     top: -65px;
 }
 
+.description-container {
+    position: relative;
+    height: 100px; /* set a height for the container */
+    overflow: hidden; /* hide any overflow */
+  }
+
 .description {
     font-size: 16px;
     margin-top: 10px;
@@ -101,6 +107,25 @@ text-decoration: none;
     color: #666;
 }
 
+.read-more-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 8px 0;
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .read-more-button:hover {
+    background-color: #ddd;
+  }
+  
 .promotion-banner {
     text-align: center;
     display: block;

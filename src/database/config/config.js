@@ -4,7 +4,8 @@ module.exports = {
     "password": null,
     "database": "capucafe_db",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "port": 3306
   },
   "test": {
     "username": "root",

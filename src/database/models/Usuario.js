@@ -27,11 +27,15 @@ module.exports = (sequelize,dataTypes) => {
                 type: dataTypes.INTEGER(11),
                 allowNull : false,
             },
+            avatar : {
+                type: dataTypes.STRING(50),
+                allowNull : false,
+            },
             createdAt : {
-                type : dataTypes.DATETIME
+                type : dataTypes.DATE 
             },
             updatedAt : {
-                type : dataTypes.DATETIME
+                type : dataTypes.DATE 
             }
     }
     const config ={

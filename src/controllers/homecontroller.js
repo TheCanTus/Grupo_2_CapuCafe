@@ -1,11 +1,17 @@
 const path = require('path')
 const fs = require ('fs')
-
-let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname,'..', 'database', 'productos.json')))
+const db = require('../database/models')
 
 
 const metodos = {
-    home:(req, res) =>{res.render(path.join(__dirname , '../views/index.ejs'), {productos});}
+    home:(req, res) =>{
+        db.Producto.findAll()
+        .then(productos=>{
+            res.render(path.join(__dirname , '../views/index.ejs'), {productos});
+        })
+        
+    
+    }
 }
 
 

@@ -15,23 +15,25 @@ module.exports = (sequelize,dataTypes) => {
                 type: dataTypes.STRING(255),
             },
             categoriaId : {
-                type: dataTypes.STRING(255),
+                type: dataTypes.INTEGER(11),
                 foreignKey: true,
                 allowNull : false,
+                references: { model: 'categoria', key: 'id' }
             },
             colorId : {
-                type: dataTypes.STRING(50),
+                type: dataTypes.INTEGER(11),
                 foreignKey: true,
+                references: { model: 'colores', key: 'id' }
             },
             precio : {
                 type: dataTypes.FLOAT(12.2),
                 allowNull : false,
             },
             createdAt : {
-                type : dataTypes.DATETIME
+                type : dataTypes.DATE 
             },
             updatedAt : {
-                type : dataTypes.DATETIME
+                type : dataTypes.DATE 
             }
     }
     const config ={

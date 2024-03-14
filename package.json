@@ -26,6 +26,7 @@
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
     "express": "^4.18.2",
+    "express-layout": "^0.1.0",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",
     "finalhandler": "^1.2.0",
@@ -65,6 +66,7 @@
     "safe-buffer": "^5.2.1",
     "safer-buffer": "^2.1.2",
     "send": "^0.18.0",
+    "sequelize": "^6.37.1",
     "serve-static": "^1.15.0",
     "session": "^0.1.0",
     "set-function-length": "^1.1.1",
@@ -84,5 +86,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "sequelize-cli": "^6.6.2"
+  }
 }

@@ -1,18 +1,23 @@
-const path = require('path')
+const path = require('path');
+const fs = require('fs');
+const db = require('../database/models')
 
-const product = {
+const Producto = db.Producto;
+
+module.exports = {
     productCart: (req, res) =>{
-        res.render(path.join(__dirname , '../views/productCart.ejs'));
+        res.render('productCart');
     },
-    productDetail: (req, res) =>{
-        res.render(path.join(__dirname , '../views/productDetail.ejs'));
-    },
-    crearProducto: (req, res) =>{
-        res.render(path.join(__dirname , '../views/crearProducto.ejs'))
-    },
-    editarProducto: (req, res) =>{
-        res.render(path.join(__dirname , '../views/editarProducto.ejs'))
+    productDetail: (req,res)=>{
+        const productos = Producto.findAll();
+
+        const id = req.params.id;
+        let miProducto;
+        productos.forEach(producto => {
+            if(producto.id == id){
+                miProducto = producto;
+            }
+        }) ;
+        res.render('productDetail', {productos, miProducto});
     }
 };
-
-module.exports = product;

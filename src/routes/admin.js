@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const multer = require('multer');
+
 //Importación del Middleware
 const adminController = require(path.resolve(__dirname,'../controllers/adminController'));
-const guestMiddleware = require('../middlewares/guestMiddleware');
+const isAdminRoute = require('../middlewares/admRouteMiddleware');
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=> {
@@ -21,12 +22,12 @@ const upload = multer({storage})
 
 
 
-router.get('/products', guestMiddleware, adminController.index);
-router.get('/products/create', adminController.create);
-router.post('/products/create', upload.single('imagenes'), adminController.save);
-router.get('/products/detail/:id', adminController.show);
-router.get('/products/:id/edit', adminController.edit);
-router.put('/products/:id/edit', adminController.update);
-router.get('/products/delete/:id', adminController.destroy);
+router.get('/', isAdminRoute, adminController.index);
+router.get('/create', isAdminRoute, adminController.create);
+router.post('/create', isAdminRoute, upload.single('imagenes'), adminController.save);
+router.get('/detail/:id', isAdminRoute,adminController.show);
+router.put('/:id/edit', upload.single('imagenes'), isAdminRoute, adminController.update);
+router.get('/delete/:id', isAdminRoute,adminController.destroy);
+router.get('/:id/edit', isAdminRoute, adminController.edit);
 
 module.exports = router;

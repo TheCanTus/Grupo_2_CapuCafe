@@ -5,6 +5,8 @@ const path = require('path');
 const multer = require('multer');
 const bcrypt = require('bcryptjs');
 const guestMiddleware = require('../middlewares/guestMiddleware')
+const authMiddleware = require('../middlewares/authMiddleware')
+
 
 const {body} = require('express-validator');
 
@@ -53,8 +55,8 @@ userRoutes.post('/register', upload.single('avatar'), validacionesRegistro, cont
 
 userRoutes.post('/login', controllersUser.loginProcess);
 userRoutes.get('/login', guestMiddleware, controllersUser.login);
-userRoutes.get('/user/profile', controllersUser.profile)
-
+userRoutes.get('/user/profile', authMiddleware, controllersUser.profile)
+userRoutes.get('/logout', controllersUser.logOut)
 
 module.exports = userRoutes;
 

@@ -145,23 +145,15 @@ body {
 }
 
 .account {
-    display: block;
+    position: relative;
 }
-
 
 .icono-checkbox {
     display: none;
 }
 
-.icono-checkbox:checked+.account-menu {
-    display: block;
-    position: absolute;
-    top: 100%;
-}
-
 .account-menu {
     background-color: #27262B;
-    display: block;
     position: absolute;
     top: 100%;
     right: 0;
@@ -169,12 +161,26 @@ body {
     padding: 10px;
     z-index: 999;
     list-style: none;
+    width: 200px;
+    display: none;
 }
+
+
 
 .account-menu a {
     display: block;
     text-decoration: none;
     color: white;
+    padding: 10px;
+}
+
+.account-menu a:hover {
+    background-color: #BC7643;
+}
+
+
+.icono-checkbox:checked~.account-menu {
+    display: block;
 }
 
 

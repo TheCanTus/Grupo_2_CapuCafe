@@ -3,75 +3,80 @@
 
 <head>
     <%- include('./partials/head')%>
-    <link rel="stylesheet" href="/css/productDetailStyle.css">
+        <link rel="stylesheet" href="/css/productDetailStyle.css">
 
 </head>
 
 <body>
     <%- include('./partials/header')%>
 
-    <main>
+        <main>
+            <div class="caja-1">
+                <div class="product-image-main">
+                    <div class="alternate-image">
+                        <img src="/images/productos/<%= miProducto.imagenes %>" alt="MásImagenes1">
+                        <img src="/images/productos/<%= miProducto.imagenes %>" alt="MásImagenes2">
+                        <img src="/images/productos/<%= miProducto.imagenes %>" alt="MásImagenes3">
+                    </div>
+                    <div class="product-image">
+                        <img src="/images/productos/<%= miProducto.imagenes %>" alt="Producto">
+                    </div>
 
-        <div class="caja-1">
-            <div class="product-image-main">
-                <div class="alternate-image">
-                    <img src="/images/img-cafetera-moulinex.jpg" alt="MásImagenes1">
-                    <img src="/images/img-cafetera-moulinex.jpg" alt="MásImagenes2">
-                    <img src="/images/img-cafetera-moulinex.jpg" alt="MásImagenes3">
-                </div>
-                <div class="product-image">
-                    <img src="/images/img-cafetera-moulinex.jpg" alt="Producto">
-                </div>
+                    <div class="product-info">
+                        <h1>
+                            <%= miProducto.nombre %>
+                        </h1>
+                        <p>Precio: $ <%= miProducto.precio %>
+                        </p>
+                        <p>Disponibilidad: En stock</p>
+                        <label for="product-type">Color:</label>
+                        <select id="product-type">
+                            <option value="Tipo 1">Azul</option>
+                            <option value="Tipo 2">Rojo</option>
+                            <option value="Tipo 3">Negro</option>
+                        </select>
 
-                <div class="product-info">
-                    <h1>Cafetera Moulinex</h1>
-                    <p>Precio: $120.000</p>
-                    <p>Disponibilidad: En stock</p>
-                    <label for="product-type">Color:</label>
-                    <select id="product-type">
-                        <option value="Tipo 1">Azul</option>
-                        <option value="Tipo 2">Rojo</option>
-                        <option value="Tipo 3">Negro</option>
-                    </select>
-
-                    <div class="quantity-control">
-                        <button id="decrement-quantity">-</button>
-                        <span id="quantity">1</span>
-                        <button id="increment-quantity">+</button>
+                        <div class="quantity-control">
+                            <button id="decrement-quantity">-</button>
+                            <span id="quantity">1</span>
+                            <button id="increment-quantity">+</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="caja-2">
-            <div class="product-description">
-                <h2>Descripción</h2>
-                <p>Mini Me es una elegante máquina de café que cabe en cualquier cocina y es fácil de usar, ya que el
-                    flujo se detiene automáticamente dependiendo del tamaño de la taza.</p>
-            </div>
-            <div class="cart-button">
-                <button id="add-to-cart-button">Agregar al carrito</button>
-            </div>
-        </div>
-
-        <h2>Productos relacionados</h2>
-        <section class="related-products">
-            <div class="related-product">
-                <img src="/images/img-cafetera-moulinex.jpg" alt="Producto Relacionado 1">
-                <p>Cafetera Moulinex V2</p>
-                <div class="price">$XX.XX</div>
+            <div class="caja-2">
+                <div class="product-description">
+                    <h2>Descripción</h2>
+                    <p>
+                        <%= miProducto.descripcion %>
+                    </p>
+                </div>
+                <div class="cart-button">
+                    <button id="add-to-cart-button">Agregar al carrito</button>
+                </div>
             </div>
 
-            <div class="related-product">
-                <img src="/images/img-cafetera-moulinex.jpg" alt="Producto Relacionado 2">
-                <p>Cafetera Moulinex V3</p>
-                <div class="price">$XX.XX</div>
-            </div>
+            <h2>Productos relacionados</h2>
 
-        </section>
+            <section class="related-products">
+                <% productos.forEach(producto=> { %>
+                    <div class="related-product">
+                        <a href="/productos/<%= producto.id%>">
+                            <img src="/images/productos/<%= producto.imagenes %>" alt="Producto Relacionado 1">
+                            <p>
+                                <%= producto.nombre %>
+                            </p>
+                            <div class="price">$<%= producto.precio %>
+                            </div>
+                        </a>
+                    </div>
+                    <% }); %>
+
+            </section>
 
 
-    </main>
+        </main>
 
         <!-- Footer -->
         <%- include('./partials/footer')%>

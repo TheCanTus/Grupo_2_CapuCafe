@@ -1,14 +1,5 @@
 [
   {
-    "nombre": "Cafe torrado 2",
-    "descripcion": "Cafe normal",
-    "imagenes": "img-cafetera-moulinex.jpg",
-    "categoria": "Cafe",
-    "colores": "cafe",
-    "precio": "354.97",
-    "id": "1"
-  },
-  {
     "nombre": "cafe comun",
     "descripcion": "comun tucan",
     "imagenes": "img-cafetera-moulinex.jpg",
@@ -20,9 +11,9 @@
   {
     "nombre": "Cafe Colombiano",
     "descripcion": "El origen del grano es cultivado en la región de Huila, Colombia. Este café se trata de un blend de diferentes variedades, clasificados con los altos estandares de exportacion de la Federacion Colombiana del Café. Presenta como características en su sabor una acidez limpia, frutal y vivaz. Con aroma floral y de cuerpo liviano, característico de los café de beneficio lavado. Notas de cata: chocolate, cereza y naranja.",
-    "imagenes": "img-cafetera-moulinex.jpg",
-    "categoria": "Cafe",
-    "colores": "Marron",
+    "imagenes": "",
+    "categoria": "Repuesto",
+    "colores": "verde",
     "precio": "600",
     "id": "3"
   },
@@ -32,5 +23,13 @@
     "descripcion": "Presenta como características en su sabor una acidez limpia, frutal y vivaz. Con aroma floral y de cuerpo liviano, característico de los café de beneficio lavado.",
     "precio": "66145",
     "imagenes": "img-cafetera-moulinex.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Nescafé Gold Espresso 100gr",
+    "descripcion": "Despierte sus sentidos cada mañana con la sofisticación y el sabor intenso de Nescafé Gold Espresso. Este café instantáneo de 100 gramos, proveniente de la prestigiosa línea Gold y originario de Francia, es la elección perfecta para los amantes del buen café que valoran la calidad y la comodidad.",
+    "precio": "15999",
+    "categoria": "Cafe",
+    "imagenes": "1708592091655_img.jpg"
   }
 ]

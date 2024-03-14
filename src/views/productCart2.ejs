@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head')%>
+    <link rel="stylesheet" href="/css/carritodecompras.css">
+</head>
+
+<body>
+    <%- include('./partials/header')%>
+    
+    <main>
+        <section id="carrito">
+            <h2>Resumen del Carrito</h2>
+            <p>
+
+                <button id="vaciar-carrito">Vaciar Carrito</button>
+            </p>
+            <div id="vista-producto">
+                <!-- Aquí puedes mostrar la vista del producto a comprar -->
+                <img src="/images/img-cafetera-moulinex.jpg" alt="Producto">
+                <h3>Cafetera Italiana</h3>
+                <p>Precio: $5000.00</p>
+            </div>
+            <div id="total">
+                <p>Monto Total</p>
+                <h3>$5000.00</h3>
+            </div>
+            <div class="boton-pagar">
+                <button id="ir-a-pagar">Ir a Pagar</button>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <%- include('./partials/footer')%>
+</body>
+
+</html>

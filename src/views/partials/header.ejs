@@ -27,8 +27,12 @@
                     <label for="user-icon" class="fa-solid fa-user" id="icono-blanco"></label>
                     <input type="checkbox" id="user-icon" class="icono-checkbox">
                     <ul class="account-menu">
-                        <li><a href="/register">Crea tu cuenta</a></li>
-                        <li><a href="/login">Ingresa</a></li>
+                        <% if (locals.isLogged) { %>
+                            <li><a href="/logout">Cerrar sesión</a></li>
+                            <%} else { %>
+                                <li><a href="/register">Crea tu cuenta</a></li>
+                                <li><a href="/login">Ingresa</a></li>
+                                <% } %>
                     </ul>
                 </div>
             </span>
@@ -49,7 +53,9 @@
                 </li>
                 <li><a href="#">Ofertas</a></li>
                 <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="/products">Administrar</a></li>
+                <% if (locals.isAdmin) { %>
+                    <li><a href="/products">Administrar</a></li>
+                <% } %>
             </ul>
         </div>
     </div>

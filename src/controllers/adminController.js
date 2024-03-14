@@ -1,81 +1,99 @@
 const path = require('path');
 const fs = require('fs');
 const { log } = require('console');
+const db = require('../database/models')
+
+const Categorias = db.categoria;
+const Color = db.Color;
+const Producto = db.Producto;
 
 module.exports = {
-    index: (req,res) =>{
-        let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
-        res.render(path.resolve(__dirname, '../views/admin/administrar.ejs'), {productos});
+    index: (req, res) => {
+        db.Producto.findAll()
+            .then(productos => {
+                res.render("admin/administrar", { productos })
+            })
     },
-    create: (req,res)=>{
-        res.render(path.resolve(__dirname,'../views/admin/crearproducto.ejs'))
+    create: (req, res) => {
+        Categorias.findAll()
+            .then((categorias) => {
+                res.render('admin/crearproducto', { categorias })
+            })
     },
     save: (req, res) => {
-        let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
-    
-        let ultimoElemento = productos[productos.length - 1];
-    
-        //console.log("Ultimo Elemento:", ultimoElemento);
-    
-        let nuevoProducto = {
-            id: ultimoElemento ? parseInt(ultimoElemento.id) + 1 : 1,
+        Producto.create({
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
             precio: req.body.precio,
-            categoria: req.body.categoria,
+            categoriaId: req.body.categoriaId,
             imagenes: req.file.filename,
-        }
-    
-        console.log("Nuevo Producto:", nuevoProducto);
-    
-        productos.push(nuevoProducto);
-    
-        let nuevoProductoGuardar = JSON.stringify(productos, null, 2);
-    
-        fs.writeFileSync(path.resolve(__dirname, '../database/productos.json'), nuevoProductoGuardar);
-        res.redirect('/products');
-    }
-    ,
-    show: (req,res)=>{
-        let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
-        let id = req.params.id;
-        let miProducto;
-        productos.forEach(producto => {
-            if(producto.id == id){
-                miProducto = producto;
-            }
-        });
-        res.render(path.resolve(__dirname, '../views/admin/detail.ejs'),{miProducto})
-    },
-    edit : (req,res)=>{
-        let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));
-        let id = req.params.id;
-        let productoEditar = productos.find(producto =>{
-            return producto.id == id
         })
-        res.render(path.resolve(__dirname,'../views/admin/editarproducto.ejs'),{productoEditar})
+            .then(() => {
+                res.redirect('/products');
+            })
+            .catch(error => res.send(error));
+
+        console.log(req.body.categoriaId);
     },
-    update : (req,res)=>{
-        let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));  
-        let id = req.params.id;
-        req.body.id = id;
-        let productosActualizar = productos.map(producto =>{
-            if(producto.id == id){
-                return producto = req.body;
+    show: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const miProducto = await Producto.findByPk(id);
+
+            if (miProducto) {
+                res.render('admin/detail', { miProducto })
+            } else {
+                res.status(404).send('Producto no encontrado')
             }
-            return producto;
-        })    
-        let productoActualizado = JSON.stringify(productosActualizar,null,2);
-        fs.writeFileSync(path.resolve(__dirname,'../database/productos.json'),productoActualizado);
-        res.redirect('/products');
+        } catch (error) {
+            console.error('Error al obtener el producto', error);
+            res.status(500).send('Error interno del servidor')
+
+        }
+    },
+    edit: async (req, res) => {
+        try {
+            const id = req.params.id;
+            const productoEditar = await Producto.findByPk(id);
+            const categorias = await Categorias.findAll()
+            const colores = await Color.findAll()
+
+            if (!productoEditar) {
+                return res.status(404).send('Producto no encontrado')
+            }
+            res.render('admin/editarproducto', { productoEditar, categorias, colores })
+        } catch (error) {
+            console.error('Error al editar el producto', error);
+            res.status(500).send('Error interno del servidor')
+        }
 
     },
-    destroy: (req,res)=>{
-        let productos = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/productos.json')));  
-        let id = req.params.id;
-        let productosFinal = productos.filter(producto => producto.id != id)
-        let productosGuardarFinal = JSON.stringify(productosFinal,null,2);
-        fs.writeFileSync(path.resolve(__dirname,'../database/productos.json'),productosGuardarFinal);
-        res.redirect('/products');
+    update: async (req, res) => {
+
+        try {
+            const id = req.params.id;
+            const { nombre, descripcion, categoriaId, colores, precio } = req.body;
+
+            const producto = { nombre, descripcion, categoriaId, colores, precio };
+
+            await Producto.update(producto, { where: { id } });
+
+            res.redirect('/products');
+
+        } catch (error) {
+            console.error('Error al actualizar el producto: ', error)
+            res.status(500).send("Hubo un error interno del servidor")
+        }
+    },
+    destroy: async (req, res) => {
+/*         try {
+            const id = req.params.id;
+            await Producto.destroy({ where: { id } })
+            res.redirect('/products')
+        } catch (error) {
+            console.error('Error al eliminar el producto: ', error)
+            res.status(500).send("Hubo un error interno del servidor")
+
+        } */
     }
 }

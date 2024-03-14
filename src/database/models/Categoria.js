@@ -1,5 +1,5 @@
 module.exports = (sequelize,dataTypes) => {
-    const alias = 'Color';
+    const alias = 'categoria';
     const cols = {
             id : {
                 type: dataTypes.INTEGER(11),
@@ -7,21 +7,21 @@ module.exports = (sequelize,dataTypes) => {
                 allowNull : false,
                 autoIncrement : true,
             },
-            color : {
+            categoria : {
                 type: dataTypes.STRING(50),
                 allowNull : false,
             },
             createdAt : {
-                type : dataTypes.DATETIME
+                type : dataTypes.DATE
             },
             updatedAt : {
-                type : dataTypes.DATETIME
+                type : dataTypes.DATE
             }
     }
     const config ={
+        tableName:'categorias',
         timeStamps : true,
-        underScored : true,
     }
-    const Color = sequelize.define(alias,cols,config)
-    return Color;
+    const Categoria = sequelize.define(alias,cols,config)
+    return Categoria;
 }

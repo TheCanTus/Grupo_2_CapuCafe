@@ -8,6 +8,4 @@ router.get('/', metodos.home);
 
 
 
-
-
 module.exports = router;
