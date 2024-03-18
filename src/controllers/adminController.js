@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const { log } = require('console');
+const { log, error } = require('console');
 const db = require('../database/models')
 
 const Categorias = db.categoria;
@@ -86,14 +86,12 @@ module.exports = {
         }
     },
     destroy: async (req, res) => {
-/*         try {
-            const id = req.params.id;
-            await Producto.destroy({ where: { id } })
-            res.redirect('/products')
-        } catch (error) {
-            console.error('Error al eliminar el producto: ', error)
-            res.status(500).send("Hubo un error interno del servidor")
-
-        } */
+        let productoId = req.params.id;
+        Producto
+        .destroy({where: {id: productoId}, force: true})
+        .then(()=>{
+            return res.redirect(301,'/products');
+        })
+        .catch(error => res.send(error))
     }
 }

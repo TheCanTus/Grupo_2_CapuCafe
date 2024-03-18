@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const user = require('../models/usuarios')
 const db = require('../database/models')
 
+const Usuario = db.Usuario;
+
 
 const { validationResult } = require('express-validator');
 const { error } = require('console');
@@ -53,8 +55,61 @@ const usercontroller = {
         res.render(path.join(__dirname, '../views/users/login.ejs'));
     },
 
-    loginProcess: (req, res) => {
-        let userToLogin = user.findByField('Email', req.body.email);
+    loginProcess: async (req, res) => {
+        try {
+            const { email, password } = req.body;
+
+            // Busca el usuario por su email en la base de datos
+            const userToLogin = await Usuario.findOne({ where: { email } });
+
+            if (req.session.userLogged) {
+                return req.redirect('/users/profile')
+            }
+
+            if (!userToLogin) {
+                return res.redirect('/users/login', {
+                    errors: {
+                        email: {
+                            msg: 'No se encontró el nombre de usuario'
+                        }
+                    }
+                });
+            }
+
+            // Verifica si la contraseña es correcta
+            const passwordMatch = bcrypt.compareSync(password, userToLogin.password);
+
+            console.log(passwordMatch);
+
+            if (!passwordMatch) {
+                return res.render('../views/users/login.ejs', {
+                    errors: {
+                        password: {
+                            msg: 'Las credenciales son inválidas'
+                        }
+                    }
+                });
+            }
+
+            //cookies
+            if (req.body.remember_user) {
+                res.cookie('userEmail', userToLogin.email, { maxAge: 60 * 60 * 24 * 7 });
+            }
+
+            // Elimina la contraseña del objeto usuario antes de almacenarlo en la sesión
+            delete userToLogin.password;
+
+            // Almacena al usuario en la sesión
+            req.session.userLogged = userToLogin;
+
+            // Redirecciona al perfil del usuario
+            res.redirect('/users/profile');
+        } catch (error) {
+            console.error('Error en el proceso de inicio de sesión:', error);
+            res.status(500).send("Hubo un error interno del servidor");
+        }
+
+        /* let userToLogin = user.findByField('Email', req.body.email);
         if (req.session.userLogged) {
             return req.redirect('/users/profile')
         }
@@ -88,7 +143,8 @@ const usercontroller = {
                     msg: 'No se encontró el nombre de usuario'
                 }
             }
-        })
+        }) */
+
     },
 
     profile: (req, res) => {

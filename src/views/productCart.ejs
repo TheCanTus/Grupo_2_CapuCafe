@@ -1,36 +1,46 @@
+<!-- productCart.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <link rel="stylesheet" href="/css/carritodecompras.css">
-    <%- include('./partials/head')%>
+    <%- include('./partials/head') %>
+    <link rel="stylesheet" href="/css/productCart.css">
 </head>
-
 <body>
-    <%- include('./partials/header')%>
-        <div class="cart-container">
-            <h2>Resumen del Carrito</h2>
-            <table id="cartTable">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>cantidad</th>
-                        <th>Precio</th>
-                    </tr>
-                </thead>
-                <tbody id="cartItems">
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="2" align="right"><strong>Total:</strong></td>
-                        <td id="totalPrice">$0.00</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
+    <%- include('./partials/header') %>
 
-    <!-- Footer -->
-    <%- include('./partials/footer')%>
+    <div class="cart-container">
+        <h2>Resumen del Carrito</h2>
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="cartItems">
+                <% cartProducts.forEach(product => { %>
+                    <tr>
+                        <td><%= product.nombre %></td>
+                        <td><%= product.cantidad %></td>
+                        <td>$<%= product.precio %></td>
+                        <td>
+                            <button class="remove-item-btn" data-product-id="<%= product.id %>">Eliminar</button>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2" align="right"><strong>Total:</strong></td>
+                    <td colspan="2" id="totalPrice">$0.00</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <%- include('./partials/footer') %>
+    <script src="/js/productCart.js"></script>
 </body>
-
 </html>

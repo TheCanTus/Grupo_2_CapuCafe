@@ -15,11 +15,11 @@
             <form action="/login" method="POST">
                 <h2>Iniciar Sesión</h2>
                 <div class="form-group">
-                    <label for="username">Correo electronico</label>
-                    <input type="text" id="username" name="username" placeholder="Ingrese su Email" required>
-                    <% if (locals.errors && errors.Email) { %>
+                    <label for="email">Correo electronico</label>
+                    <input type="text" id="email" name="email" placeholder="Ingrese su Email" required>
+                    <% if (locals.errors && errors.email) { %>
                         <div class="text-danger">
-                            <%= errors.Email.msg %>
+                            <%= errors.email.msg %>
                                 <% }%>
                         </div>
                         <div class="form-group">
