@@ -16,11 +16,12 @@ module.exports = (sequelize,dataTypes) => {
                 allowNull : false,
             },
             email : {
-                type: dataTypes.STRING(100),
+                type: dataTypes.STRING(100) ,
                 allowNull : false,
+                unique : true,
             },
             password : {
-                type: dataTypes.STRING(50),
+                type: dataTypes.STRING(255),
                 allowNull : false,
             },
             rol : {

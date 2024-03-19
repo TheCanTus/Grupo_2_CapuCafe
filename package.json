@@ -25,7 +25,7 @@
     "encodeurl": "^1.0.2",
     "escape-html": "^1.0.3",
     "etag": "^1.8.1",
-    "express": "^4.18.2",
+    "express": "^4.18.3",
     "express-layout": "^0.1.0",
     "express-session": "^1.17.3",
     "express-validator": "^7.0.1",

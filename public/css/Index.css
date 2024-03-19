@@ -94,8 +94,8 @@ text-decoration: none;
 
 .description-container {
     position: relative;
-    height: 100px; /* set a height for the container */
-    overflow: hidden; /* hide any overflow */
+    height: 100px; 
+    overflow: hidden; 
   }
 
 .description {

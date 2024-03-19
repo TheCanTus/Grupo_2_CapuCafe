@@ -13,6 +13,16 @@ module.exports = {
                 rol: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
+            },
+            {
+                nombre: "Lucas",
+                apellido: "Alustiza",
+                email: "lucasfedealustiza@gmail.com",
+                password: await bcrypt.hashSync("123456", 10),
+                avatar: "1705415990327_img.jpg",
+                rol: 2,
+                createdAt: new Date(),
+                updatedAt: new Date()
             }
         ];
 

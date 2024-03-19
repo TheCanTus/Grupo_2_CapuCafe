@@ -12,7 +12,6 @@ const {body} = require('express-validator');
 
 const controllersUser = require(path.resolve(__dirname,'../controllers/usercontroller'));
 
-let archivoUsuarios = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/usuarios.json')));
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=> {
@@ -55,8 +54,9 @@ userRoutes.post('/register', upload.single('avatar'), validacionesRegistro, cont
 
 userRoutes.post('/login', controllersUser.loginProcess);
 userRoutes.get('/login', guestMiddleware, controllersUser.login);
-userRoutes.get('/user/profile', authMiddleware, controllersUser.profile)
+userRoutes.get('/users/profile', authMiddleware, controllersUser.profile)
 userRoutes.get('/logout', controllersUser.logOut)
+
 
 module.exports = userRoutes;
 

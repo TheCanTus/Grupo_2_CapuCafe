@@ -1,5 +1,5 @@
 function isAdminRoute(req, res, next) {
-    if (req.session.userLogged && req.session.userLogged.role === 2) {
+    if (req.session.userLogged && req.session.userLogged.rol === 2) {
         res.locals.isAdmin = true;
         next();
     }
