@@ -66,26 +66,3 @@ const adminApiController = {
 
 
 module.exports = moviesAPIController;
-
-/* 
-"dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cookie-parser": "~1.4.4",
-    "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "dotenv": "^10.0.0",
-    "ejs": "~2.6.1",
-    "express": "^4.17.1",
-    "express-session": "^1.17.2",
-    "express-validator": "^6.12.1",
-    "http-errors": "~1.6.3",
-    "method-override": "^3.0.0",
-    "morgan": "~1.9.1",
-    "multer": "^1.4.3",
-    "mysql2": "^2.3.2",
-    "sequelize": "^6.7.0"
-  },
-  "devDependencies": {
-    "sequelize-cli": "^6.2.0",
-    "nodemon": "^2.0.20"
-  } */

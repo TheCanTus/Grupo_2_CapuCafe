@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
-const user = require('../models/usuarios')
 const db = require('../database/models')
 
 const Usuario = db.Usuario;
@@ -11,46 +10,60 @@ const { validationResult } = require('express-validator');
 const { error } = require('console');
 
 const usercontroller = {
-    registrar: (req, res) => {
+    registrar: async (req, res) => {
         res.render(path.resolve(__dirname, '../views/users/register.ejs'));
     },
 
-    create: (req, res) => {
-        let archivoUsuarios = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../database/usuarios.json')));
-        const errors = validationResult(req);
-
-        let userInDB = user.findByField('email', req.body.email);
-
-        if (userInDB) {
-            return res.render(path.resolve(__dirname, '../views/users/register.ejs'), {
-                errors: {
-                    email: {
-                        msg: 'Este Email ya esta registrado'
+    create: async (req, res) => {
+        try {
+            const resultValidation =  validationResult(req);
+            if(!resultValidation.isEmpty()){
+                return res.render('../views/users/register.ejs', {
+                    errors: resultValidation.mapped(),
+                    old: req.body
                     }
-                },
-                oldData: req.body
-            });
-        }
+                );
+            }
 
-        if (errors.isEmpty()) {
-            let usuario = {
+            const emailExists = await Usuario.findOne({ where: { email: req.body.email } });
+            if (emailExists) {
+                //return res.status(400).send('Este Email ya está registrado');
+                return res.render('../views/users/register.ejs', {
+                    errors: {
+                        email: {
+                            msg: 'El mail esta en uso'
+                        }
+                    }
+                });
+            }
+
+            if (req.body.password !== req.body.confirm_password) {
+               //return res.status(400).send('Las contraseñas no coinciden');
+                return res.render('../views/users/register.ejs', {
+                    errors: {
+                        password: {
+                            msg: 'Las contraseñas no coinciden'
+                        }
+                    }
+                });
+            }
+
+            const newUser = await Usuario.create({
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
                 avatar: req.file.filename,
-                role: 1,
-            }
-            archivoUsuarios.push(usuario);
-            let nuevoUsuarioGuardar = JSON.stringify(archivoUsuarios, null, 2)
-            fs.writeFileSync(path.resolve(__dirname, '../database/usuarios.json'), nuevoUsuarioGuardar);
-            res.redirect('/login')
-        } else {
-            console.log(errors.errors)
-            return res.render(path.resolve(__dirname, '../views/users/register.ejs'), { errors: errors.errors, old: req.body });
+                rol: 1
+            });
+
+            res.redirect('/login');
+
+        } catch (error) {
+            console.error('Error en la creación de usuario:', error);
+            res.status(500).send("Hubo un error interno del servidor");
         }
     },
-
     login: (req, res) => {
         res.render(path.join(__dirname, '../views/users/login.ejs'));
     },
@@ -67,10 +80,10 @@ const usercontroller = {
             }
 
             if (!userToLogin) {
-                return res.redirect('/users/login', {
+                return res.render('../views/users/login.ejs', {
                     errors: {
                         email: {
-                            msg: 'No se encontró el nombre de usuario'
+                            msg: 'Las credenciales son inválidas'
                         }
                     }
                 });
@@ -78,8 +91,6 @@ const usercontroller = {
 
             // Verifica si la contraseña es correcta
             const passwordMatch = bcrypt.compareSync(password, userToLogin.password);
-
-            console.log(passwordMatch);
 
             if (!passwordMatch) {
                 return res.render('../views/users/login.ejs', {
@@ -108,42 +119,6 @@ const usercontroller = {
             console.error('Error en el proceso de inicio de sesión:', error);
             res.status(500).send("Hubo un error interno del servidor");
         }
-
-        /* let userToLogin = user.findByField('Email', req.body.email);
-        if (req.session.userLogged) {
-            return req.redirect('/users/profile')
-        }
-        if (userToLogin) {
-            let contraseñaCorrecta = bcrypt.compareSync(req.body.password, userToLogin.password);
-            if (contraseñaCorrecta) {
-                delete userToLogin.password;
-                req.session.userLogged = userToLogin;
-
-                //cookies
-                if (req.body.remember_user) {
-                    res.cookie('userEmail', userToLogin.email, { maxAge: 60 * 60 * 24 * 7});
-                }
-
-                //console.log(req.session)
-                return res.redirect('/user/profile')
-            }
-            return res.render('../views/users/login.ejs', {
-                errors: {
-                    password: {
-                        msg: 'Las credenciales son inválidas'
-                    }
-                }
-            })
-
-
-        }
-        return res.render('../views/users/login.ejs', {
-            errors: {
-                email: {
-                    msg: 'No se encontró el nombre de usuario'
-                }
-            }
-        }) */
 
     },
 

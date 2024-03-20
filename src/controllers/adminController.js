@@ -1,7 +1,9 @@
 const path = require('path');
 const fs = require('fs');
-const { log, error } = require('console');
 const db = require('../database/models')
+const { validationResult } = require('express-validator');
+const { log } = require('console');
+
 
 const Categorias = db.categoria;
 const Color = db.Color;
@@ -20,20 +22,33 @@ module.exports = {
                 res.render('admin/crearproducto', { categorias })
             })
     },
-    save: (req, res) => {
-        Producto.create({
-            nombre: req.body.nombre,
-            descripcion: req.body.descripcion,
-            precio: req.body.precio,
-            categoriaId: req.body.categoriaId,
-            imagenes: req.file.filename,
-        })
-            .then(() => {
-                res.redirect('/products');
+    save: async (req, res) => {
+        const categorias = await Categorias.findAll()
+        console.log(categorias);
+        try {   
+            const resultValidation = validationResult(req);
+            if (!resultValidation.isEmpty()) {
+                return res.render('../views/admin/crearproducto.ejs', {
+                    errors: resultValidation.mapped(),
+                    old: req.body,
+                    categorias
+                }
+                );
+            }
+            Producto.create({
+                nombre: req.body.nombre,
+                descripcion: req.body.descripcion,
+                precio: req.body.precio,
+                categoriaId: req.body.categoriaId,
+                imagenes: req.file.filename,
             })
-            .catch(error => res.send(error));
-
-        console.log(req.body.categoriaId);
+                .then(() => {
+                    res.redirect('/products');
+                })
+        } catch (error) { 
+            console.error(error);
+            return res.status(500).send('Error al crear el producto')
+        }
     },
     show: async (req, res) => {
         try {
@@ -88,10 +103,10 @@ module.exports = {
     destroy: async (req, res) => {
         let productoId = req.params.id;
         Producto
-        .destroy({where: {id: productoId}, force: true})
-        .then(()=>{
-            return res.redirect(301,'/products');
-        })
-        .catch(error => res.send(error))
+            .destroy({ where: { id: productoId }, force: true })
+            .then(() => {
+                return res.redirect(301, '/products');
+            })
+            .catch(error => res.send(error))
     }
 }

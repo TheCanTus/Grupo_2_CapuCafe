@@ -16,6 +16,12 @@
 
                 <h1>Cargar un nuevo producto</h1>
 
+                <% if (typeof(errors) !='undefined' && errors.imagenes) {%>
+                    <div class="alert alert-danger">
+                        <%= errors.imagenes.msg %>
+                    </div>
+                    <% } %>
+
                 <input type="text" name="nombre" placeholder="Nombre" required="required" value="">
 
                 <input type="text" name="descripcion" placeholder="Descripcion" required="required" value="">
