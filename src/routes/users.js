@@ -23,6 +23,5 @@ userRoutes.get('/login', guestMiddleware, controllersUser.login);
 userRoutes.get('/users/profile', authMiddleware, controllersUser.profile)
 userRoutes.get('/logout', controllersUser.logOut)
 
-
 module.exports = userRoutes;
 

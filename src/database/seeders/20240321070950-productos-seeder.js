@@ -4,10 +4,6 @@ const bcrypt = require('bcrypt');
 module.exports = {
   up: async (queryInterface, Sequelize) => {
 
-    await queryInterface.sequelize.query("INSERT INTO categorias (categoria, createdAt, updatedAt) VALUES ('Cafe', NOW(), NOW());");
-    await queryInterface.sequelize.query("INSERT INTO colores (color, createdAt, updatedAt) VALUES ('Cafe', NOW(), NOW());");
-
-
     const productos = [
       {
         nombre: "Nescafé Gold Espresso 100gr",
@@ -15,7 +11,7 @@ module.exports = {
         categoriaId: 1,
         imagenes: "1710700030393_img.jpg",
         precio: 15999,
-        colorId: 'Marron',
+        colorId: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -25,7 +21,7 @@ module.exports = {
         categoriaId: 1,
         imagenes: "1710700030393_img.jpg",
         precio: 15999,
-        colorId: 'Marron',
+        colorId: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -35,7 +31,7 @@ module.exports = {
         categoriaId: 1,
         imagenes: "1710700030393_img.jpg",
         precio: 15999,
-        colorId: 'Marron',
+        colorId: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -45,7 +41,7 @@ module.exports = {
         categoriaId: 1,
         imagenes: "1710700030393_img.jpg",
         precio: 15999,
-        colorId: 'Marron',
+        colorId: 4,
         createdAt: new Date(),
         updatedAt: new Date()
       },

@@ -65,4 +65,4 @@ const adminApiController = {
 
 
 
-module.exports = moviesAPIController;
+module.exports = adminApiController;

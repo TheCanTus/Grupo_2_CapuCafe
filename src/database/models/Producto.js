@@ -1,49 +1,37 @@
-module.exports = (sequelize,dataTypes) => {
-    const alias = 'Producto';
-    const cols = {
-            id : {
-                type: dataTypes.INTEGER(11),
-                primaryKey : true ,
-                allowNull : false,
-                autoIncrement : true,
-            },
-            nombre : {
-                type: dataTypes.STRING(50),
-                allowNull : false,
-            },
-            descripcion : {
-                type: dataTypes.STRING(255),
-            },
-            categoriaId : {
-                type: dataTypes.INTEGER(11),
-                foreignKey: true,
-                allowNull : false,
-                references: { model: 'categoria', key: 'id' }
-            },
-            imagenes : {
-                type: dataTypes.STRING(50),
-                allowNull : false,
-            },
-            colorId : {
-                type: dataTypes.INTEGER(11),
-                foreignKey: true,
-                references: { model: 'colores', key: 'id' }
-            },
-            precio : {
-                type: dataTypes.FLOAT(12.2),
-                allowNull : false,
-            },
-            createdAt : {
-                type : dataTypes.DATE 
-            },
-            updatedAt : {
-                type : dataTypes.DATE 
-            }
+const Sequelize = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+    
+    console.log(Categoria)
+    const Producto = sequelize.define(
+        "Producto",
+        {
+        id: {
+            type: DataTypes.INTEGER(11),
+            primaryKey: true,
+            allowNull: false,
+            autoIncrement: true,
+        },
+        nombre:  DataTypes.STRING,
+        descripcion: DataTypes.STRING,
+        categoriaId: DataTypes.INTEGER,
+        imagenes: DataTypes.STRING,
+        colorId: DataTypes.INTEGER,
+        precio: DataTypes.FLOAT,
+        createdAt: DataTypes.DATE,
+        updatedAt: DataTypes.DATE
+    },
+    {
+        tableName: 'productos',
+        timestamps: false,
     }
-    const config ={
-        timeStamps : true,
-        underScored : true,
-    }
-    const Producto = sequelize.define(alias,cols,config)
+    );
+
+    Producto.associate = (models) => {
+        Producto.belongsTo(models.Categoria, {
+            foreignKey: 'categoriaId',
+            as: 'Categoria',
+        });
+    };
+
     return Producto;
 }

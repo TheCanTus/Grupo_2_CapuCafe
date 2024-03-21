@@ -28,7 +28,7 @@ CREATE TABLE `capucafe_db`.`colores` (
   PRIMARY KEY (`id`));
 
 CREATE TABLE `capucafe_db`.`productos` (
-  `id` INT NOT NULL auto_increment,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(50) NOT NULL,
   `descripcion` VARCHAR(255) NULL,
   `categoriaId` INT NOT NULL,
@@ -39,18 +39,20 @@ CREATE TABLE `capucafe_db`.`productos` (
   `updatedAt` DATETIME NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_categoria_producto`
-    FOREIGN KEY (`id`)
-    REFERENCES `capucafe_db`.`categorias` (`id`)
+    FOREIGN KEY (`categoriaId`)
+    REFERENCES categorias(id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_color_producto`
-    FOREIGN KEY (`id`)
-    REFERENCES `capucafe_db`.`colores` (`id`)
+    FOREIGN KEY (`colorId`)
+    REFERENCES colores(id)   
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION
+);
+
 
 CREATE TABLE `capucafe_db`.`usuariosproductos` (
-  `id` INT NOT NULL auto_increment,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `usuariosId` INT NOT NULL,
   `productoId` INT NOT NULL,
   `cantidad` INT NOT NULL,
@@ -58,12 +60,13 @@ CREATE TABLE `capucafe_db`.`usuariosproductos` (
   `updatedAt` DATETIME NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_usuariosid`
-    FOREIGN KEY (`id`)
+    FOREIGN KEY (`usuariosId`)
     REFERENCES `capucafe_db`.`usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_productoid`
-    FOREIGN KEY (`id`)
+    FOREIGN KEY (`productoId`)
     REFERENCES `capucafe_db`.`productos` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE NO ACTION
+);

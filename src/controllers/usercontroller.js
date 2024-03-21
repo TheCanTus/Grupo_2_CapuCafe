@@ -10,18 +10,19 @@ const { validationResult } = require('express-validator');
 const { error } = require('console');
 
 const usercontroller = {
-    registrar: async (req, res) => {
-        res.render(path.resolve(__dirname, '../views/users/register.ejs'));
-    },
+
+registrar: async (req, res) => {
+    res.render(path.resolve(__dirname, '../views/users/register.ejs'));
+},
 
     create: async (req, res) => {
         try {
-            const resultValidation =  validationResult(req);
-            if(!resultValidation.isEmpty()){
+            const resultValidation = validationResult(req);
+            if (!resultValidation.isEmpty()) {
                 return res.render('../views/users/register.ejs', {
                     errors: resultValidation.mapped(),
                     old: req.body
-                    }
+                }
                 );
             }
 
@@ -38,7 +39,7 @@ const usercontroller = {
             }
 
             if (req.body.password !== req.body.confirm_password) {
-               //return res.status(400).send('Las contraseñas no coinciden');
+                //return res.status(400).send('Las contraseñas no coinciden');
                 return res.render('../views/users/register.ejs', {
                     errors: {
                         password: {
@@ -64,75 +65,75 @@ const usercontroller = {
             res.status(500).send("Hubo un error interno del servidor");
         }
     },
-    login: (req, res) => {
-        res.render(path.join(__dirname, '../views/users/login.ejs'));
-    },
+        login: (req, res) => {
+            res.render(path.join(__dirname, '../views/users/login.ejs'));
+        },
 
-    loginProcess: async (req, res) => {
-        try {
-            const { email, password } = req.body;
+            loginProcess: async (req, res) => {
+                try {
+                    const { email, password } = req.body;
 
-            // Busca el usuario por su email en la base de datos
-            const userToLogin = await Usuario.findOne({ where: { email } });
+                    // Busca el usuario por su email en la base de datos
+                    const userToLogin = await Usuario.findOne({ where: { email } });
 
-            if (req.session.userLogged) {
-                return req.redirect('/users/profile')
-            }
-
-            if (!userToLogin) {
-                return res.render('../views/users/login.ejs', {
-                    errors: {
-                        email: {
-                            msg: 'Las credenciales son inválidas'
-                        }
+                    if (req.session.userLogged) {
+                        return req.redirect('/users/profile')
                     }
-                });
-            }
 
-            // Verifica si la contraseña es correcta
-            const passwordMatch = bcrypt.compareSync(password, userToLogin.password);
-
-            if (!passwordMatch) {
-                return res.render('../views/users/login.ejs', {
-                    errors: {
-                        password: {
-                            msg: 'Las credenciales son inválidas'
-                        }
+                    if (!userToLogin) {
+                        return res.render('../views/users/login.ejs', {
+                            errors: {
+                                email: {
+                                    msg: 'Las credenciales son inválidas'
+                                }
+                            }
+                        });
                     }
-                });
-            }
 
-            //cookies
-            if (req.body.remember_user) {
-                res.cookie('userEmail', userToLogin.email, { maxAge: 60 * 60 * 24 * 7 });
-            }
+                    // Verifica si la contraseña es correcta
+                    const passwordMatch = bcrypt.compareSync(password, userToLogin.password);
 
-            // Elimina la contraseña del objeto usuario antes de almacenarlo en la sesión
-            delete userToLogin.password;
+                    if (!passwordMatch) {
+                        return res.render('../views/users/login.ejs', {
+                            errors: {
+                                password: {
+                                    msg: 'Las credenciales son inválidas'
+                                }
+                            }
+                        });
+                    }
 
-            // Almacena al usuario en la sesión
-            req.session.userLogged = userToLogin;
+                    //cookies
+                    if (req.body.remember_user) {
+                        res.cookie('userEmail', userToLogin.email, { maxAge: 60 * 60 * 24 * 7 });
+                    }
 
-            // Redirecciona al perfil del usuario
-            res.redirect('/users/profile');
-        } catch (error) {
-            console.error('Error en el proceso de inicio de sesión:', error);
-            res.status(500).send("Hubo un error interno del servidor");
-        }
+                    // Elimina la contraseña del objeto usuario antes de almacenarlo en la sesión
+                    delete userToLogin.password;
 
-    },
+                    // Almacena al usuario en la sesión
+                    req.session.userLogged = userToLogin;
 
-    profile: (req, res) => {
-        return res.render('../views/users/profile.ejs', {
-            user: req.session.userLogged
-        });
-    },
+                    // Redirecciona al perfil del usuario
+                    res.redirect('/users/profile');
+                } catch (error) {
+                    console.error('Error en el proceso de inicio de sesión:', error);
+                    res.status(500).send("Hubo un error interno del servidor");
+                }
 
-    logOut: (req, res) => {
-        req.session.destroy();
-        res.clearCookie('userEmail');
-        return res.redirect("/");
-    }
+            },
+
+                profile: (req, res) => {
+                    return res.render('../views/users/profile.ejs', {
+                        user: req.session.userLogged
+                    });
+                },
+
+                    logOut: (req, res) => {
+                        req.session.destroy();
+                        res.clearCookie('userEmail');
+                        return res.redirect("/");
+                    }
 
 }
 

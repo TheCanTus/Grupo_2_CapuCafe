@@ -1,37 +1,33 @@
 // Importar módulos y configuraciones
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const session = require('express-session')
+const session = require('express-session');
 const app = express();
 const path = require('path');
-const routes = require('./routes/routes')
-const userRoutes = require('./routes/users')
-const productRoutes = require('./routes/product')
+
+//Rutas
+const routes = require('./routes/routes');
+const userRoutes = require('./routes/users');
+const productRoutes = require('./routes/product');
 const adminRoutes = require('./routes/admin');
+
+//Rutas api
+const userApiRoutes = require('./routes/api/users');
+const productsApiRoutes = require('./routes/api/products');
+
+
 const methodOverride = require('method-override');
-const multer = require('multer');
+//const multer = require('multer');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const isAdmin = require('./middlewares/adminMiddleware');
 
-
-// Configurar middleware de almacenamiento para multer
-/* const storage = multer.diskStorage({
-  destination: './public/images/users/',
-  filename: (req, file, cb) => {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
-
-// Inicializar multer
-const upload = multer({ storage });
- */
 
 // Configurar sesión de Express
 app.use(session({
   secret: "secret",
   resave: true,
   saveUninitialized: true
-}))
+}));
 
 // Middleware Cookies
 app.use(cookieParser());
@@ -48,13 +44,19 @@ app.use(methodOverride('_method'));
 // Middleware de recordar usuario y middleware de usuario logueado
 app.use(userLoggedMiddleware);
 //app.use(isAdmin)
-app.use(isAdmin)
+app.use(isAdmin);
 
 // Rutas de la aplicación
 app.use(routes);
 app.use(userRoutes);
 app.use(productRoutes);
 app.use('/products',adminRoutes);
+
+//rutas api
+app.use('/api/users', userApiRoutes);
+//app.use('/api/products', productsApiRoutes);
+
+
 
 // Iniciar servidor
 app.listen(8000, () =>
