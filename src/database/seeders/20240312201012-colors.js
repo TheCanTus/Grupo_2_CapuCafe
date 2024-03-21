@@ -18,6 +18,11 @@ module.exports = {
         color: 'Azul',
         createdAt: new Date(),
         updatedAt: new Date()
+      },
+      {
+        color: 'Marron',
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
       // Puedes añadir más objetos de color aquí si lo deseas
     ], {});
