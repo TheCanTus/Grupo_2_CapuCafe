@@ -1,7 +1,4 @@
-const Sequelize = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    
-    console.log(Categoria)
     const Producto = sequelize.define(
         "Producto",
         {
@@ -27,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     );
 
     Producto.associate = (models) => {
-        Producto.belongsTo(models.Categoria, {
+        Producto.belongsTo(models.categoria, {
             foreignKey: 'categoriaId',
             as: 'Categoria',
         });

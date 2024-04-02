@@ -24,7 +24,6 @@ module.exports = {
     },
     save: async (req, res) => {
         const categorias = await Categorias.findAll()
-        console.log(categorias);
         try {   
             const resultValidation = validationResult(req);
             if (!resultValidation.isEmpty()) {

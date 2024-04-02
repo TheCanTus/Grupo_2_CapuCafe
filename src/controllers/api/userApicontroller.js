@@ -1,10 +1,6 @@
 const db = require('../../database/models');
 
-
-
 const Usuario = db.Usuario;
-
-
 
 const usersApicontroller = {
     // API usuarios
@@ -16,7 +12,7 @@ const usersApicontroller = {
                         id: user.id,
                         name: user.name,
                         email: user.email,
-                        detail: `/api/users/${user.id}`
+                        detail: "http://localhost:8000/api/users/"+ user.id
                     };
                 });
 
@@ -47,7 +43,7 @@ const usersApicontroller = {
                     id: user.id,
                     name: user.name,
                     email: user.email,
-                    profileImageUrl: user.profileImageUrl ? `/uploads/${user.profileImageUrl}` : null
+                    profileImageUrl: user.avatar
                 };
 
                 // Devolver el objeto literal con la estructura requerida

@@ -6,5 +6,6 @@ const controllersApiproduct = require('../../controllers/api/productApiControlle
 
 
 productApiRoutes.get('/', controllersApiproduct.list)
+productApiRoutes.get('/:id', controllersApiproduct.list)
 
 module.exports = productApiRoutes;

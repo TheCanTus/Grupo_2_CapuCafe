@@ -14,10 +14,10 @@ const adminRoutes = require('./routes/admin');
 //Rutas api
 const userApiRoutes = require('./routes/api/users');
 const productsApiRoutes = require('./routes/api/products');
+const categoriesApiRoutes = require('./routes/api/categories');
 
 
 const methodOverride = require('method-override');
-//const multer = require('multer');
 const userLoggedMiddleware = require('./middlewares/userLoggedMiddleware')
 const isAdmin = require('./middlewares/adminMiddleware');
 
@@ -54,7 +54,8 @@ app.use('/products',adminRoutes);
 
 //rutas api
 app.use('/api/users', userApiRoutes);
-//app.use('/api/products', productsApiRoutes);
+app.use('/api/productos', productsApiRoutes);
+app.use('/api/categories', categoriesApiRoutes);
 
 
 

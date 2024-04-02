@@ -1,11 +1,6 @@
 const db = require('../../database/models');
 
-
-
 const Producto = db.Producto;
-const Categoria = db.Categoria;
-const Color = db.Color;
-;
 
 const productsApiController = {
     // Obtener lista de productos
@@ -32,6 +27,24 @@ const productsApiController = {
                 res.status(500).json({ error: 'Error interno del servidor' });
             });
     },
+    detail: (req, res) => {
+        Producto.findByPk(req.params.id)
+            .then(product => {
+                return res.json(
+                    {
+                        // meta: {
+                        //     status: 200,
+                        //     total: product.length,
+                        //     url: "http://localhost:8000/api/products/" + req.params.id
+                        // },
+                        data: product
+                    },
+                )
+            })
+            .catch(errors =>{
+                res.send(errors)
+            })
+},
 /*     'list': (req, res) => {
         Producto.findAll({
             include: ['categoria']

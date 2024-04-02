@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
+<%- include("../partials/head.ejs",{pageTitle: "Perfil-RodBar Delivery"})%>
+<link rel="stylesheet" href="/css/profile.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de perfil de ecommerce</title>
-    <%- include('../partials/head')%>
-</head>
-<%- include('../partials/header')%>
-
-    <body>
-        <div class="container">
-            <div class="row">
-                <h2>Hola <%= user.nombre%></h2>
-                <img src="/images/users/<%= user.avatar%>" alt="Foto de perfil" class="profile-image">
-
-                <h1 class="profile-name"></h1>
-
+<header>
+    <%- include("../partials/header.ejs", { req: locals.req }) %>
+</header>
+<body class="contenedorPrincipal">
+    <main class="contenedorSecundario">
+        <section class="tarjeta tarjetaUsuario">
+            <img src="/images/users/<%= user.avatar%>" alt="imagen del usuario" class="imgPerfil">
+            <div class="datos">
+                <h2 class="textoPrincipal"><%= user.nombre %></h2>
             </div>
-        </div>
-    </body>
-    <%- include('../partials/footer')%>
-
+        </section>
+        <section class="tarjeta tarjetaUsuario correo">
+            <h3 class="textoPrincipal">Correo</h3>
+            <p class="textoSecundario"><%= user.email %></p>
+            <a href="/editarUser/<%= user.id %>"></a>
+        </section>
+    </main>
+    <%- include("../partials/footer.ejs") %>
+</body>
 </html>
