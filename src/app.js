@@ -54,7 +54,7 @@ app.use('/products',adminRoutes);
 
 //rutas api
 app.use('/api/users', userApiRoutes);
-app.use('/api/productos', productsApiRoutes);
+app.use('/api/products', productsApiRoutes);
 app.use('/api/categories', categoriesApiRoutes);
 
 

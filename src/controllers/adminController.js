@@ -46,7 +46,6 @@ module.exports = {
                 })
         } catch (error) { 
             console.error(error);
-            return res.status(500).send('Error al crear el producto')
         }
     },
     show: async (req, res) => {

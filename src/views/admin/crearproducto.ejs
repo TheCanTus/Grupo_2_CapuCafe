@@ -16,11 +16,21 @@
 
                 <h1>Cargar un nuevo producto</h1>
 
-                <% if (typeof(errors) !='undefined' && errors.imagenes) {%>
+                <% if (typeof(errors) !='undefined' && errors.nombre) {%>
                     <div class="alert alert-danger">
-                        <%= errors.imagenes.msg %>
+                        <%= errors.nombre.msg %>
                     </div>
                     <% } %>
+                    <% if (typeof(errors) !='undefined' && errors.descripcion) {%>
+                        <div class="alert alert-danger">
+                            <%= errors.descripcion.msg %>
+                        </div>
+                        <% } %>
+                        <% if (typeof(errors) !='undefined' && errors.imagenes) {%>
+                            <div class="alert alert-danger">
+                                <%= errors.imagenes.msg %>
+                            </div>
+                            <% } %>
 
                 <input type="text" name="nombre" placeholder="Nombre" required="required" value="">
 

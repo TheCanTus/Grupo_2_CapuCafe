@@ -4,29 +4,31 @@ const Usuario = db.Usuario;
 
 const usersApicontroller = {
     // API usuarios
-    'list': (req, res) => {
-        Usuario.findAll()
-            .then(users => {
-                let formattedUsers = users.map(user => {
-                    return {
-                        id: user.id,
-                        name: user.name,
-                        email: user.email,
-                        detail: "http://localhost:8000/api/users/"+ user.id
-                    };
-                });
-
-                let respuesta = {
-                    count: users.length,
-                    users: formattedUsers
-                };
-
-                res.json(respuesta);
-            })
-            .catch(err => {
-                console.error('Error al obtener usuarios:', err);
-                res.status(500).json({ error: 'Error interno del servidor' });
+    'list': async (req, res) => {
+        try {
+            const usuarios = await Usuario.findAll({
+                attributes: {
+                    exclude: ['password']
+                }
             });
+
+            let respuesta = {
+                meta: {
+                    length: usuarios.length,
+                    url: '/api/users',
+                    statusCode: 200
+                },              
+                data: usuarios
+            };
+
+            res.status(200).json(respuesta);
+        } catch (error) {
+            console.error('Error: ' ,error);
+            res.status(500).json({
+                error: error.message,
+                statusCode: 500
+            });
+        }
     },
     // API usuarios - Detalle de usuario por ID
     'detail': (req, res) => {
